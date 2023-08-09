@@ -1,20 +1,46 @@
 #!/bin/sh
 
+# set terminal styles
+# are we on terrminal?
+if [ -t 1 ] ; then
+    # tput available?
+    if [ ! "x`which tput 2>/dev/null`" = "x" ] ; then
+        # supports colors ?
+        ncolors=`tput colors`
+        if [ -n "$ncolors" -a  $ncolors -ge 8 ] ; then
+            style_bold="`tput bold`"
+            style_underline="`tput smul`"
+            style_standout="`tput smso`"
+            style_normal="`tput sgr0`"
+            style_black="`tput setaf 0`"
+            style_red="`tput setaf 1`"
+            style_green="`tput setaf 2`"
+            style_yellow="`tput setaf 3`"
+            style_blue="`tput setaf 4`"
+            style_magenta="`tput setaf 5`"
+            style_cyan="`tput setaf 6`"
+            style_white="`tput setaf 7`"
+        fi
+    fi
+fi
+
 REPO_PATH=`dirname $0`
 
-echo "Adjust xfce4-terminal..."
+echo "Adjust xfce4-terminal."
 mkdir -p ${HOME}/.config/xfce4/terminal
 cp "${REPO_PATH}/xfce4-terminal/terminalrc" ${HOME}/.config/xfce4/terminal
 echo
 
-echo "Setup ssh key..."
+echo "Setup ssh key - ${style_yellow}Answer ssh-keygen's questions:${style_normal}"
+echo
 ssh-keygen
 echo
 
-echo "Ask sudo password..."
+echo "${style_yellow}Enter sudo password:${style_normal}"
 sudo echo
 
-echo "Install dev packages..."
+echo "${style_green}Install dev packages...${style_normal}"
+echo
 sudo dnf install \
     caja \
     pluma \
@@ -24,6 +50,8 @@ sudo dnf install \
     gedit \
     \
     qt-creator \
+    podman \
+    podman-docker \
     clang-tools-extra \
     cmake git clazy \
     systemd-devel \
@@ -61,7 +89,12 @@ sudo dnf install \
     gtest-devel
 echo
 
-echo "Install classic-light schemes (gtksourceview)..."
+# Quieten docker / podman notes:
+sudo touch /etc/containers/nodocker
+
+echo "${style_green}Install classic-light schemes (gtksourceview)...${style_normal}"
 sudo cp "${REPO_PATH}/gtksourceview-classic-light/classic-light.xml" /usr/share/gtksourceview-4/styles/
 echo
+
+echo "${style_blue}Maybe log off / log on is a good thing to do now???${style_normal}"
 
