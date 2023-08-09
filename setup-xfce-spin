@@ -5,6 +5,14 @@ REPO_PATH=`dirname $0`
 echo "Adjust xfce4-terminal..."
 mkdir -p ${HOME}/.config/xfce4/terminal
 cp "${REPO_PATH}/xfce4-terminal/terminalrc" ${HOME}/.config/xfce4/terminal
+echo
+
+echo "Setup ssh key..."
+ssh-keygen
+echo
+
+echo "Ask sudo password..."
+sudo echo
 
 echo "Install dev packages..."
 sudo dnf install \
@@ -51,6 +59,9 @@ sudo dnf install \
     flatbuffers-devel flatbuffers-compiler protobuf-devel protobuf-compiler \
     \
     gtest-devel
+echo
 
 echo "Install classic-light schemes (gtksourceview)..."
 sudo cp "${REPO_PATH}/gtksourceview-classic-light/classic-light.xml" /usr/share/gtksourceview-4/styles/
+echo
+
