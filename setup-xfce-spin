@@ -1,0 +1,56 @@
+#!/bin/sh
+
+REPO_PATH=`dirname $0`
+
+echo "Adjust xfce4-terminal..."
+mkdir -p ${HOME}/.config/xfce4/terminal
+cp "${REPO_PATH}/xfce4-terminal/terminalrc" ${HOME}/.config/xfce4/terminal
+
+echo "Install dev packages..."
+sudo dnf install \
+    caja \
+    pluma \
+    gnome-system-monitor \
+    xfce4-sensors-plugin \
+    htop \
+    gedit \
+    \
+    qt-creator \
+    clang-tools-extra \
+    cmake git clazy \
+    systemd-devel \
+    openssl-devel \
+    python3-devel python3-numpy \
+    xsd xerces-c-devel \
+    fftw-devel \
+    php-jsonlint python3-jsonschema \
+    qt5-linguist qt5-doctools qt5-qtscript \
+    qt5-qtlocation-devel \
+    qt5-qtcharts-devel \
+    qt5-qtdeclarative-devel \
+    qt5-qtlocation-devel \
+    qt5-qtmultimedia-devel \
+    qt5-qtquickcontrols2-devel \
+    qt5-qtsensors-devel \
+    qt5-qtserialport-devel \
+    qt5-qtsvg-devel \
+    qt5-qttools-devel \
+    qt5-qtvirtualkeyboard-devel \
+    qt5-qtwayland-devel \
+    qt5-qtwebchannel-devel \
+    qt5-qtwebengine-devel \
+    qt5-qtwebkit-devel \
+    qt5-qtx11extras-devel \
+    qt5-qtxmlpatterns-devel \
+    qt-devel \
+    \
+    kf5-networkmanager-qt-devel kf5-modemmanager-qt-devel kf5-syntax-highlighting-devel \
+    \
+    qwt-qt5-devel \
+    \
+    flatbuffers-devel flatbuffers-compiler protobuf-devel protobuf-compiler \
+    \
+    gtest-devel
+
+echo "Install classic-light schemes (gtksourceview)..."
+sudo cp "${REPO_PATH}/gtksourceview-classic-light/classic-light.xml" /usr/share/gtksourceview-4/styles/
