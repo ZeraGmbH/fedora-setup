@@ -52,6 +52,8 @@ sudo dnf install \
     pluma \
     gnome-system-monitor \
     xfce4-sensors-plugin \
+    xfce4-cpugraph-plugin \
+    xfce4-cpufreq-plugin \
     htop \
     gedit \
     \
