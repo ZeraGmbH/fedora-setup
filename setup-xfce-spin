@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# exit when any command fails
+set -e
+
 # set terminal styles
 # are we on terrminal?
 if [ -t 1 ] ; then
@@ -31,16 +34,19 @@ mkdir -p ${HOME}/.config/xfce4/terminal
 cp "${REPO_PATH}/xfce4-terminal/terminalrc" ${HOME}/.config/xfce4/terminal
 echo
 
-echo "Setup ssh key - ${style_yellow}Answer ssh-keygen's questions:${style_normal}"
-echo
-ssh-keygen
-echo
+if [ ! -e ${HOME}/.ssh/id_rsa.pub ]; then
+    echo "Setup ssh key - ${style_yellow}Answer ssh-keygen's questions:${style_normal}"
+    ssh-keygen
+    echo
+fi
 
 echo "${style_yellow}Enter sudo password:${style_normal}"
 sudo echo
 
+echo "${style_green}Update packages...${style_normal}"
+sudo dnf update
+
 echo "${style_green}Install dev packages...${style_normal}"
-echo
 sudo dnf install \
     caja \
     pluma \
@@ -87,14 +93,13 @@ sudo dnf install \
     flatbuffers-devel flatbuffers-compiler protobuf-devel protobuf-compiler \
     \
     gtest-devel
-echo
 
 # Quieten docker / podman notes:
 sudo touch /etc/containers/nodocker
 
 echo "${style_green}Install classic-light schemes (gtksourceview)...${style_normal}"
 sudo cp "${REPO_PATH}/gtksourceview-classic-light/classic-light.xml" /usr/share/gtksourceview-4/styles/
-echo
 
+echo
 echo "${style_blue}Maybe log off / log on is a good thing to do now???${style_normal}"
 
