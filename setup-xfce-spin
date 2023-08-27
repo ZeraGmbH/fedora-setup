@@ -56,6 +56,7 @@ sudo dnf install \
     xfce4-cpufreq-plugin \
     htop \
     gedit \
+    libreoffice \
     \
     qt-creator \
     podman \
