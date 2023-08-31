@@ -94,10 +94,12 @@ sudo dnf install \
     qwt-qt5-devel \
     \
     flatbuffers-devel flatbuffers-compiler protobuf-devel protobuf-compiler \
+    jq \
     \
     gtest-devel \
     plantuml plantumlqeditor \
-    dialog
+    dialog \
+    ghex
 echo
 
 echo "${style_green}Quieten docker / podman notes.${style_normal}"
