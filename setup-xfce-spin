@@ -95,7 +95,8 @@ sudo dnf install \
     \
     flatbuffers-devel flatbuffers-compiler protobuf-devel protobuf-compiler \
     \
-    gtest-devel
+    gtest-devel \
+    plantuml plantumlqeditor
 
 # Quieten docker / podman notes:
 sudo touch /etc/containers/nodocker
