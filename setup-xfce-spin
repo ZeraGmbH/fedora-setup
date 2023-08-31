@@ -4,8 +4,7 @@
 set -e
 
 # set terminal styles
-# are we on terrminal?
-if [ -t 1 ] ; then
+if [ -t 1 ] ; then # are we on terminal?
     # tput available?
     if [ ! "x`which tput 2>/dev/null`" = "x" ] ; then
         # supports colors ?
