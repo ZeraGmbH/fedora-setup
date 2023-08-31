@@ -28,7 +28,7 @@ fi
 
 REPO_PATH=`dirname $0`
 
-echo "Adjust xfce4-terminal."
+echo "${style_green}Adjust xfce4-terminal settings.${style_normal}"
 mkdir -p ${HOME}/.config/xfce4/terminal
 cp "${REPO_PATH}/xfce4-terminal/terminalrc" ${HOME}/.config/xfce4/terminal
 echo
@@ -44,6 +44,7 @@ sudo echo
 
 echo "${style_green}Update packages...${style_normal}"
 sudo dnf update
+echo
 
 echo "${style_green}Install dev packages...${style_normal}"
 sudo dnf install \
@@ -97,13 +98,15 @@ sudo dnf install \
     gtest-devel \
     plantuml plantumlqeditor \
     dialog
-
-# Quieten docker / podman notes:
-sudo touch /etc/containers/nodocker
-
-echo "${style_green}Install classic-light schemes (gtksourceview)...${style_normal}"
-sudo cp "${REPO_PATH}/gtksourceview-classic-light/classic-light.xml" /usr/share/gtksourceview-4/styles/
-
 echo
+
+echo "${style_green}Quieten docker / podman notes.${style_normal}"
+sudo touch /etc/containers/nodocker
+echo
+
+echo "${style_green}Install classic-light schemes (gtksourceview).${style_normal}"
+sudo cp "${REPO_PATH}/gtksourceview-classic-light/classic-light.xml" /usr/share/gtksourceview-4/styles/
+echo
+
 echo "${style_blue}Maybe log off / log on is a good thing to do now???${style_normal}"
 
