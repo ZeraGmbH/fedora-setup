@@ -97,6 +97,7 @@ sudo dnf install \
     jq \
     \
     gtest-devel \
+    kernel-devel \
     plantuml plantumlqeditor \
     dialog \
     ghex
