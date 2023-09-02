@@ -68,6 +68,7 @@ sudo dnf install \
     \
     qt-creator \
     valgrind \
+    perf \
     podman \
     podman-docker \
     clang-tools-extra \
@@ -107,6 +108,7 @@ sudo dnf install \
     \
     gtest-devel \
     kernel-devel \
+    glmark2 \
     plantuml plantumlqeditor \
     dialog \
     ghex \
