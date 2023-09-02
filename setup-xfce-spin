@@ -109,6 +109,9 @@ sudo dnf install \
     plantuml plantumlqeditor \
     dialog \
     ghex \
+    kolourpaint \
+    krdc \
+    kcachegrind \
     code
 echo
 
