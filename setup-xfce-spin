@@ -67,6 +67,7 @@ sudo dnf install \
     libreoffice \
     \
     qt-creator \
+    valgrind \
     podman \
     podman-docker \
     clang-tools-extra \
