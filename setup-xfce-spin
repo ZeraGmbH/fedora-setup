@@ -55,7 +55,7 @@ if [ ! -e /etc/yum.repos.d/vscode.repo ]; then
 fi
 
 echo "${style_green}Install dev packages...${style_normal}"
-sudo dnf install \
+sudo dnf -y install \
     caja \
     pluma \
     gnome-system-monitor \
