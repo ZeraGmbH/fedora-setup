@@ -122,10 +122,6 @@ sudo dnf -y install \
     code
 echo
 
-echo "${style_green}Install openapi-generator-cli${style_normal}"
-sudo npm install @openapitools/openapi-generator-cli -g
-echo
-
 echo "${style_green}Quieten docker / podman notes.${style_normal}"
 sudo touch /etc/containers/nodocker
 echo
