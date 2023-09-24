@@ -119,6 +119,7 @@ sudo dnf -y install \
     kolourpaint \
     krdc \
     kcachegrind \
+    cppcheck \
     code
 echo
 
