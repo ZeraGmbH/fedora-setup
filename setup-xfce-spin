@@ -63,6 +63,8 @@ sudo dnf -y install \
     xfce4-cpugraph-plugin \
     xfce4-cpufreq-plugin \
     htop \
+    avahi-devel \
+    avahi-tools \
     gedit \
     libreoffice \
     \
@@ -120,7 +122,8 @@ sudo dnf -y install \
     krdc \
     kcachegrind \
     cppcheck \
-    code
+    code \
+    wireshark
 echo
 
 echo "${style_green}Quieten docker / podman notes.${style_normal}"
