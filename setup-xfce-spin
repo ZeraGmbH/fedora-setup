@@ -111,6 +111,7 @@ sudo dnf -y install \
     ninja-build \
     npm \
     java \
+    xmlstarlet \
     \
     gtest-devel \
     kernel-devel \
