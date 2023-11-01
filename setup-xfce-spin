@@ -138,7 +138,8 @@ sudo dnf -y install \
     wireshark \
     dotnet-sdk-6.0 \
     dotnet-sdk-7.0 \
-    nuget
+    nuget \
+    nunit
 echo
 
 echo "${style_green}Install vscode c++/cmake extensions.${style_normal}"
@@ -184,10 +185,12 @@ echo "${style_green}Install vscode flutter extension.${style_normal}"
 code --install-extension Dart-Code.flutter
 echo
 
-
-
 echo "${style_green}Install angular.${style_normal}"
 sudo npm install -g @angular/cli
+echo
+
+echo "${style_green}Install newman/postman.${style_normal}"
+sudo npm install -g newman postman
 echo
 
 echo "${style_blue}Maybe log off / log on is a good thing to do now???${style_normal}"
