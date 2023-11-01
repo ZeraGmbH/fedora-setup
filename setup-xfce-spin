@@ -125,6 +125,7 @@ sudo dnf -y install \
     kcachegrind \
     cppcheck \
     code \
+    snapd \
     wireshark
 echo
 
@@ -134,6 +135,18 @@ echo
 
 echo "${style_green}Install classic-light schemes (gtksourceview).${style_normal}"
 sudo cp "${REPO_PATH}/gtksourceview-classic-light/classic-light.xml" /usr/share/gtksourceview-4/styles/
+echo
+
+echo "${style_green}Refreshing snap.${style_normal}"
+sudo snap refresh
+echo
+
+# https://docs.flutter.dev/get-started/install/linux
+echo "${style_green}Install flutter.${style_normal}"
+sudo snap install flutter --classic
+flutter sdk-path
+flutter config --no-analytics
+flutter --disable-telemetry
 echo
 
 echo "${style_blue}Maybe log off / log on is a good thing to do now???${style_normal}"
