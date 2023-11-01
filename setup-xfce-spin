@@ -193,5 +193,6 @@ echo "${style_green}Install newman/postman.${style_normal}"
 sudo npm install -g newman postman
 echo
 
-echo "${style_magenta}Maybe log off / log on is a good thing to do now???${style_normal}"
+echo "${style_yellow}${style_bold}Maybe log off / log on is a good thing to do now???${style_normal}"
+echo
 
