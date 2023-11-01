@@ -174,5 +174,10 @@ code --install-extension Dart-Code.flutter
 echo
 
 
+
+echo "${style_green}Install angular.${style_normal}"
+sudo npm install -g @angular/cli
+echo
+
 echo "${style_blue}Maybe log off / log on is a good thing to do now???${style_normal}"
 
