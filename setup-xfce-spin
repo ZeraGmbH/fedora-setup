@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# exit when any command fails
-set -e
-
 # set terminal styles
 if [ -t 1 ] ; then # are we on terminal?
     # tput available?
@@ -25,6 +22,15 @@ if [ -t 1 ] ; then # are we on terminal?
         fi
     fi
 fi
+
+CURRUSER=`id -u`
+if [ $CURRUSER = "0" ]; then
+    echo "${style_red}Do not run this script as root - you will be asked for sudo pawword!${style_normal}"
+    exit
+fi
+
+# exit when any command fails
+set -e
 
 REPO_PATH=`dirname $0`
 
