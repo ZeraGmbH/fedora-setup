@@ -149,5 +149,10 @@ flutter config --no-analytics
 flutter --disable-telemetry
 echo
 
+echo "${style_green}Install vscode flutter extension.${style_normal}"
+code --install-extension Dart-Code.flutter
+echo
+
+
 echo "${style_blue}Maybe log off / log on is a good thing to do now???${style_normal}"
 
