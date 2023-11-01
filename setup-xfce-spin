@@ -43,7 +43,7 @@ echo "${style_yellow}Enter sudo password:${style_normal}"
 sudo echo
 
 echo "${style_green}Update packages...${style_normal}"
-sudo dnf update
+sudo dnf -y update
 echo
 
 # see https://code.visualstudio.com/docs/setup/linux
