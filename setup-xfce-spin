@@ -149,11 +149,15 @@ sudo dnf -y install \
 echo
 
 if [ ! -e /snap ]; then
-    echo "${style_green}Make sure snapd is started/ready for operation.${style_normal}"
+    echo "${style_green}Make sure snapd supports --classic.${style_normal}"
     sudo ln -sf /var/lib/snapd/snap /snap
-    sudo systemctl start snapd.seeded.service
-    echo "done"
+    echo "Done"
 fi
+
+echo "${style_green}Make sure snapd is started/ready for operation.${style_normal}"
+sudo systemctl start snapd.seeded.service
+echo "Done"
+
 echo
 
 echo "${style_green}Install vscode c++/cmake extensions.${style_normal}"
