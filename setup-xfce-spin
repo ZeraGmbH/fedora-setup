@@ -101,9 +101,7 @@ sudo dnf -y install \
     qt5-qtxmlpatterns-devel \
     qt5-qtconnectivity-devel \
     qt-devel \
-    \
     kf5-networkmanager-qt-devel kf5-modemmanager-qt-devel kf5-syntax-highlighting-devel \
-    \
     qwt-qt5-devel \
     \
     flatbuffers-devel flatbuffers-compiler protobuf-devel protobuf-compiler \
@@ -113,6 +111,8 @@ sudo dnf -y install \
     npm \
     java \
     xmlstarlet \
+    python3-pylint \
+    python3-pytest \
     \
     gtest-devel \
     kernel-devel \
