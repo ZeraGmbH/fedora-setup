@@ -42,6 +42,15 @@ fi
 echo "${style_yellow}Enter sudo password:${style_normal}"
 sudo echo
 
+echo "${style_green}Quieten docker / podman notes.${style_normal}"
+sudo touch /etc/containers/nodocker
+echo
+
+echo "${style_green}Install classic-light schemes (gtksourceview).${style_normal}"
+sudo cp "${REPO_PATH}/gtksourceview-classic-light/classic-light.xml" /usr/share/gtksourceview-4/styles/
+echo
+
+
 echo "${style_green}Update packages...${style_normal}"
 sudo dnf -y update
 echo
@@ -157,14 +166,6 @@ code --install-extension ms-vscode.hexeditor
 code --install-extension ms-azuretools.vscode-docker
 code --install-extension bierner.markdown-preview-github-styles
 code --install-extension GitHub.vscode-github-actions
-echo
-
-echo "${style_green}Quieten docker / podman notes.${style_normal}"
-sudo touch /etc/containers/nodocker
-echo
-
-echo "${style_green}Install classic-light schemes (gtksourceview).${style_normal}"
-sudo cp "${REPO_PATH}/gtksourceview-classic-light/classic-light.xml" /usr/share/gtksourceview-4/styles/
 echo
 
 echo "${style_green}Refreshing snap.${style_normal}"
