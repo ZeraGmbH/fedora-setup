@@ -126,7 +126,9 @@ sudo dnf -y install \
     cppcheck \
     code \
     snapd \
-    wireshark
+    wireshark \
+    dotnet-sdk-6.0 \
+    dotnet-sdk-7.0
 echo
 
 echo "${style_green}Install vscode c++/cmake extensions.${style_normal}"
