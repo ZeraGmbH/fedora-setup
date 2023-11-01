@@ -189,8 +189,8 @@ echo "${style_green}Install angular.${style_normal}"
 sudo npm install -g @angular/cli
 echo
 
-echo "${style_green}Install newman/postman.${style_normal}"
-sudo npm install -g newman postman
+echo "${style_green}Install newman/postman/nvm.${style_normal}"
+sudo npm install -g newman postman nvm
 echo
 
 echo "${style_blue}Maybe log off / log on is a good thing to do now???${style_normal}"
