@@ -148,6 +148,14 @@ sudo dnf -y install \
     nunit
 echo
 
+if [ ! -e /snap ]; then
+    echo "${style_green}Make sure snapd is started/read for operation.${style_normal}"
+    sudo ln -sf /var/lib/snapd/snap /snap
+    sudo systemctl start snapd.seeded.service
+    echo "done"
+fi
+echo
+
 echo "${style_green}Install vscode c++/cmake extensions.${style_normal}"
 code --install-extension ms-vscode.cpptools
 code --install-extension ms-vscode.cmake-tools
