@@ -186,6 +186,9 @@ code --install-extension ms-azuretools.vscode-docker
 code --install-extension bierner.markdown-preview-github-styles
 code --install-extension GitHub.vscode-github-actions
 code --install-extension  ms-vscode-remote.vscode-remote-extensionpack
+code --install-extension formulahendry.auto-rename-tag
+code --install-extension formulahendry.auto-close-tag
+code --install-extension mohsen1.prettify-json
 echo
 
 echo "${style_green}Refreshing snap.${style_normal}"
