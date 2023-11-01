@@ -147,7 +147,9 @@ echo "${style_green}Install vscode .net/C# related extensions.${style_normal}"
 code --install-extension ms-dotnettools.csharp
 code --install-extension ms-dotnettools.csdevkit
 code --install-extension patcx.vscode-nuget-gallery
+code --install-extension jmrog.vscode-nuget-package-manager
 code --install-extension EditorConfig.EditorConfig
+code --install-extension formulahendry.dotnet-test-explorer
 echo
 
 echo "${style_green}Install vscode useful extensions.${style_normal}"
