@@ -128,7 +128,8 @@ sudo dnf -y install \
     snapd \
     wireshark \
     dotnet-sdk-6.0 \
-    dotnet-sdk-7.0
+    dotnet-sdk-7.0 \
+    nuget
 echo
 
 echo "${style_green}Install vscode c++/cmake extensions.${style_normal}"
@@ -140,6 +141,13 @@ echo "${style_green}Install vscode python support.${style_normal}"
 code --install-extension ms-python.python
 code --install-extension ms-python.vscode-pylance ms-toolsai.jupyter
 code --install-extension VisualStudioExptTeam.vscodeintellicode
+echo
+
+echo "${style_green}Install vscode .net/C# related extensions.${style_normal}"
+code --install-extension ms-dotnettools.csharp
+code --install-extension ms-dotnettools.csdevkit
+code --install-extension patcx.vscode-nuget-gallery
+code --install-extension EditorConfig.EditorConfig
 echo
 
 echo "${style_green}Install vscode useful extensions.${style_normal}"
