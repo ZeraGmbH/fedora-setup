@@ -149,7 +149,7 @@ sudo dnf -y install \
 echo
 
 if [ ! -e /snap ]; then
-    echo "${style_green}Make sure snapd is started/read for operation.${style_normal}"
+    echo "${style_green}Make sure snapd is started/ready for operation.${style_normal}"
     sudo ln -sf /var/lib/snapd/snap /snap
     sudo systemctl start snapd.seeded.service
     echo "done"
@@ -208,6 +208,7 @@ echo "${style_green}Install newman/postman.${style_normal}"
 sudo npm install -g newman postman
 echo
 
+echo
 echo "${style_yellow}${style_bold}Maybe log off / log on is a good thing to do now???${style_normal}"
 echo
 
