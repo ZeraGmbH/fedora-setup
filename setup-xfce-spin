@@ -129,6 +129,24 @@ sudo dnf -y install \
     wireshark
 echo
 
+echo "${style_green}Install vscode c++/cmake extensions.${style_normal}"
+code --install-extension ms-vscode.cpptools
+code --install-extension ms-vscode.cmake-tools
+echo
+
+echo "${style_green}Install vscode python support.${style_normal}"
+code --install-extension ms-python.python
+code --install-extension ms-python.vscode-pylance ms-toolsai.jupyter
+code --install-extension VisualStudioExptTeam.vscodeintellicode
+echo
+
+echo "${style_green}Install vscode useful extensions.${style_normal}"
+code --install-extension ms-vscode.hexeditor
+code --install-extension ms-azuretools.vscode-docker
+code --install-extension bierner.markdown-preview-github-styles
+code --install-extension GitHub.vscode-github-actions
+echo
+
 echo "${style_green}Quieten docker / podman notes.${style_normal}"
 sudo touch /etc/containers/nodocker
 echo
