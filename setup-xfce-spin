@@ -34,6 +34,11 @@ set -e
 
 REPO_PATH=`dirname $0`
 
+echo "${style_yellow}Enter sudo password:${style_normal}"
+sudo echo
+
+
+############################################################################
 echo "${style_green}Adjust xfce4-terminal settings.${style_normal}"
 mkdir -p ${HOME}/.config/xfce4/terminal
 cp "${REPO_PATH}/xfce4-terminal/terminalrc" ${HOME}/.config/xfce4/terminal
@@ -45,18 +50,18 @@ if [ ! -e ${HOME}/.ssh/id_rsa.pub ]; then
     echo
 fi
 
-echo "${style_yellow}Enter sudo password:${style_normal}"
-sudo echo
-
+############################################################################
 echo "${style_green}Quieten docker / podman notes.${style_normal}"
 sudo touch /etc/containers/nodocker
 echo
 
+############################################################################
 echo "${style_green}Install classic-light schemes (gtksourceview).${style_normal}"
 sudo cp "${REPO_PATH}/gtksourceview-classic-light/classic-light.xml" /usr/share/gtksourceview-4/styles/
 echo
 
 
+############################################################################
 echo "${style_green}Update packages...${style_normal}"
 sudo dnf -y update
 echo
@@ -148,7 +153,7 @@ sudo dnf -y install \
     nunit
 echo
 
-
+############################################################################
 if [ ! -e /snap ]; then
     echo "${style_green}Make sure snapd supports --classic.${style_normal}"
     sudo ln -sf /var/lib/snapd/snap /snap
@@ -165,6 +170,7 @@ sudo snap refresh
 echo
 
 
+############################################################################
 echo "${style_green}Install vscode c++/cmake extensions.${style_normal}"
 code --install-extension ms-vscode.cpptools
 code --install-extension ms-vscode.cmake-tools
@@ -197,14 +203,17 @@ code --install-extension mohsen1.prettify-json
 code --install-extension jebbs.plantuml
 echo
 
+############################################################################
 echo "${style_green}Install angular.${style_normal}"
 sudo npm install -g @angular/cli
 echo
 
+############################################################################
 echo "${style_green}Install newman/postman.${style_normal}"
 sudo npm install -g newman postman
 echo
 
+############################################################################
 # https://docs.flutter.dev/get-started/install/linux
 echo "${style_green}Install flutter.${style_normal}"
 sudo snap install flutter --classic
@@ -212,6 +221,7 @@ sudo snap install flutter --classic
 flutter sdk-path
 flutter config --no-analytics
 flutter --disable-telemetry
+flutter doctor
 echo
 
 echo "${style_green}Install vscode flutter extension.${style_normal}"
@@ -219,6 +229,7 @@ code --install-extension Dart-Code.flutter
 echo
 
 
+############################################################################
 echo
 echo "${style_yellow}${style_bold}Maybe log off / log on is a good thing to do now???${style_normal}"
 echo
