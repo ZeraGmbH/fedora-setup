@@ -50,6 +50,8 @@ echo
 ############################################################################
 echo "${style_blue}${style_bold}Remove all snap files.${style_normal}"
 rm -rf ~/snap
+rm -rf ~/.android
+rm -rf ~/.dart-tool
 sudo rm -rf /snap
 sudo rm -rf /snap
 sudo rm -rf /var/lib/snapd
