@@ -39,7 +39,7 @@ sudo echo
 
 ############################################################################
 echo "${style_blue}${style_bold}Remove vscode flutter extension.${style_normal}"
-code --uninstall-extension Dart-Code.flutter
+code --uninstall-extension Dart-Code.flutter || true
 echo
 
 ############################################################################
