@@ -261,8 +261,11 @@ echo "${style_blue}${style_bold}Install vscode flutter extension.${style_normal}
 code --install-extension Dart-Code.flutter
 echo
 
+
 ############################################################################
 echo
-echo "${style_yellow}${style_bold}Maybe log off / log on is a good thing to do now???${style_normal}"
+echo
+echo "${style_yellow}${style_bold}Log off - HIGLY RECCOMENDED !!!!!${style_normal}"
+xfce4-session-logout
 echo
 
