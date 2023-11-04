@@ -38,6 +38,11 @@ echo "${style_yellow}Enter sudo password:${style_normal}"
 sudo echo
 
 ############################################################################
+echo "${style_blue}${style_bold}Remove vscode flutter extension.${style_normal}"
+code --uninstall-extension Dart-Code.flutter
+echo
+
+############################################################################
 echo "${style_blue}${style_bold}Remove snapd.${style_normal}"
 sudo dnf -y remove snapd
 echo
@@ -50,6 +55,11 @@ sudo rm -rf /snap
 sudo rm -rf /var/lib/snapd
 sudo rm -rf /var/snapd
 echo "Done"
+echo
+
+############################################################################
+echo "${style_blue}${style_bold}Remove dart pub cache.${style_normal}"
+rm -rf ~/.pub-cache
 echo
 
 
