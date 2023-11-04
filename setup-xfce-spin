@@ -77,6 +77,15 @@ if [ ! -e /etc/yum.repos.d/vscode.repo ]; then
     echo
 fi
 
+############################################################################
+echo "${style_blue}${style_bold}Prepare google chrome.${style_normal}"
+sudo dnf -y install fedora-workstation-repositories
+sudo dnf -y config-manager --set-enabled google-chrome
+echo "Done"
+echo
+
+
+############################################################################
 echo "${style_blue}${style_bold}Install dev packages...${style_normal}"
 sudo dnf -y install \
     caja \
@@ -90,6 +99,7 @@ sudo dnf -y install \
     avahi-tools \
     gedit \
     libreoffice \
+    google-chrome-stable \
     \
     qt-creator \
     valgrind \
@@ -189,6 +199,7 @@ code --install-extension mohsen1.prettify-json
 code --install-extension jebbs.plantuml
 echo
 
+
 ############################################################################
 echo "${style_blue}${style_bold}Install angular.${style_normal}"
 sudo npm install -g @angular/cli
@@ -211,7 +222,7 @@ sudo systemctl start snapd.seeded.service
 echo "Done"
 echo
 
-echo "${style_blue}${style_bold}Forec snapd environment on first install of snapd.${style_normal}"
+echo "${style_blue}${style_bold}Force snapd environment on first install of snapd.${style_normal}"
 # This is what /etc/bashrc does
 . /etc/profile.d/snapd.sh
 echo "Done"
