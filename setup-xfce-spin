@@ -251,6 +251,10 @@ echo "${style_blue}${style_bold}Install Android Studio (SDK is loaded on first s
 sudo snap install android-studio --classic
 echo
 
+echo "${style_blue}${style_bold}Install android sdkmanager and android SDK console tools.${style_normal}"
+sudo snap install androidsdk --classic
+echo
+
 ############################################################################
 # https://docs.flutter.dev/get-started/install/linux
 echo "${style_blue}${style_bold}Install flutter.${style_normal}"
