@@ -62,6 +62,11 @@ echo "${style_blue}${style_bold}Remove dart pub cache.${style_normal}"
 rm -rf ~/.pub-cache
 echo
 
+############################################################################
+echo "${style_blue}${style_bold}Remove android studio downloaded files.${style_normal}"
+rm -rf ~/Android
+echo
+
 
 ############################################################################
 echo
