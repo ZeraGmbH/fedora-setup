@@ -247,12 +247,12 @@ sudo snap refresh
 echo
 
 ############################################################################
-echo "${style_blue}${style_bold}Install Android Studio (SDK is loaded on first start).${style_normal}"
-sudo snap install android-studio --classic
+echo "${style_blue}${style_bold}Install android sdkmanager and android SDK console tools.${style_normal}"
+sudo snap install androidsdk
 echo
 
-echo "${style_blue}${style_bold}Install android sdkmanager and android SDK console tools.${style_normal}"
-sudo snap install androidsdk --classic
+echo "${style_blue}${style_bold}Install Android Studio (SDK is loaded on first start).${style_normal}"
+sudo snap install android-studio --classic
 echo
 
 ############################################################################
