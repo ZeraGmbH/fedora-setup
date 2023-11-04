@@ -64,7 +64,7 @@ echo
 
 ############################################################################
 echo "${style_blue}${style_bold}Remove android studio downloaded files.${style_normal}"
-rm -rf ~/Android
+rm -rf ~/Android*
 echo
 
 
