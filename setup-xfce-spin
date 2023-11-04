@@ -247,6 +247,16 @@ sudo snap refresh
 echo
 
 ############################################################################
+echo "${style_blue}${style_bold}Install Android SDK.${style_normal}"
+sudo snap install androidsdk
+androidsdk --list
+
+############################################################################
+echo "${style_blue}${style_bold}Install Android SDK/Studio.${style_normal}"
+sudo snap install android-studio --classic
+echo
+
+############################################################################
 # https://docs.flutter.dev/get-started/install/linux
 echo "${style_blue}${style_bold}Install flutter.${style_normal}"
 sudo snap install flutter --classic
