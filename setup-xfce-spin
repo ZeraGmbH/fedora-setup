@@ -78,6 +78,7 @@ if [ ! -e /etc/yum.repos.d/vscode.repo ]; then
 fi
 
 ############################################################################
+# see https://docs.fedoraproject.org/en-US/quick-docs/installing-chromium-or-google-chrome-browsers/
 echo "${style_blue}${style_bold}Prepare google chrome.${style_normal}"
 sudo dnf -y install fedora-workstation-repositories
 sudo dnf -y config-manager --set-enabled google-chrome
