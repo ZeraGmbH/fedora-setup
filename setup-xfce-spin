@@ -247,11 +247,6 @@ sudo snap refresh
 echo
 
 ############################################################################
-echo "${style_blue}${style_bold}Install Android SDK.${style_normal}"
-sudo snap install androidsdk
-androidsdk --list
-
-############################################################################
 echo "${style_blue}${style_bold}Install Android SDK/Studio.${style_normal}"
 sudo snap install android-studio --classic
 echo
