@@ -257,7 +257,7 @@ echo
 
 ############################################################################
 # https://docs.flutter.dev/get-started/install/linux
-echo "${style_blue}${style_bold}Install flutter.${style_normal}"
+echo "${style_blue}${style_bold}Install flutter - may take a while.${style_normal}"
 sudo snap install flutter --classic
 # Somthing in here installs ${HOME}/snap...
 flutter sdk-path
