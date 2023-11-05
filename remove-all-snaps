@@ -49,6 +49,7 @@ echo
 
 ############################################################################
 echo "${style_blue}${style_bold}Remove all snap files.${style_normal}"
+rm -rf ~/.dartServer
 rm -f ~/.flutter
 rm -rf ~/snap
 rm -rf ~/.android
