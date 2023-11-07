@@ -199,6 +199,7 @@ code --install-extension formulahendry.auto-rename-tag
 code --install-extension formulahendry.auto-close-tag
 code --install-extension mohsen1.prettify-json
 code --install-extension jebbs.plantuml
+code --install-extension streetsidesoftware.code-spell-checker
 echo
 
 
