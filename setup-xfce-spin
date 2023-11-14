@@ -98,6 +98,7 @@ sudo dnf -y install \
     htop \
     avahi-devel \
     avahi-tools \
+    blueman \
     gedit \
     libreoffice \
     google-chrome-stable \
