@@ -52,12 +52,6 @@ if [ ! -e ${HOME}/.ssh/id_rsa.pub ]; then
 fi
 
 ############################################################################
-echo "${style_blue}${style_bold}Quieten docker / podman notes.${style_normal}"
-sudo touch /etc/containers/nodocker
-echo "Done"
-echo
-
-############################################################################
 echo "${style_blue}${style_bold}Install classic-light schemes (gtksourceview).${style_normal}"
 sudo cp "${REPO_PATH}/gtksourceview-classic-light/classic-light.xml" /usr/share/gtksourceview-4/styles/
 echo "Done"
@@ -167,6 +161,12 @@ sudo dnf -y install \
     dotnet-sdk-7.0 \
     nuget \
     nunit
+echo
+
+############################################################################
+echo "${style_blue}${style_bold}Quieten docker / podman notes.${style_normal}"
+sudo touch /etc/containers/nodocker
+echo "Done"
 echo
 
 ############################################################################
