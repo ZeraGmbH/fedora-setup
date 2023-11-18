@@ -271,22 +271,22 @@ echo
 
 
 ############################################################################
-echo
-echo "${style_yellow}${style_bold}In case you are asked often for unlocking password:${style_normal}"
-while true; do
-    echo
-    read -p "${style_yellow}Do you want to reset your keyring password (it is restored after next login)? (y/n) ${style_normal}" yn
-    case $yn in
-        [yY] ) echo "${style_blue}${style_bold}Deleting gnome-keyring password.${style_normal}"
-            rm -f ~/.local/share/keyrings/login.keyring
-            echo "Done"
-            echo
-            break;;
-        [nN] ) echo "No action - keep gnome-keyring password";
-            break;;
-        * ) echo "${style_blue}${style_bold}Invalid response - enter 'y' or 'n'${style_normal}";;
-    esac
-done
+#echo
+#echo "${style_yellow}${style_bold}In case you are asked often for unlocking password:${style_normal}"
+#while true; do
+#    echo
+#    read -p "${style_yellow}Do you want to reset your keyring password (it is restored after next login)? (y/n) ${style_normal}" yn
+#    case $yn in
+#        [yY] ) echo "${style_blue}${style_bold}Deleting gnome-keyring password.${style_normal}"
+#            rm -f ~/.local/share/keyrings/login.keyring
+#            echo "Done"
+#            echo
+#            break;;
+#        [nN] ) echo "No action - keep gnome-keyring password";
+#            break;;
+#        * ) echo "${style_blue}${style_bold}Invalid response - enter 'y' or 'n'${style_normal}";;
+#    esac
+#done
 
 
 ############################################################################
