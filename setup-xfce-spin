@@ -25,7 +25,7 @@ fi
 
 CURRUSER=`id -u`
 if [ $CURRUSER = "0" ]; then
-    echo "${style_red}Do not run this script as root - you will be asked for sudo pawword!${style_normal}"
+    echo "${style_red}Do not run this script as root - you will be asked for sudo password!${style_normal}"
     exit
 fi
 
@@ -73,7 +73,7 @@ fi
 
 ############################################################################
 # see https://docs.fedoraproject.org/en-US/quick-docs/installing-chromium-or-google-chrome-browsers/
-echo "${style_blue}${style_bold}Prepare google chrome.${style_normal}"
+echo "${style_blue}${style_bold}Prepare Google Chrome.${style_normal}"
 sudo dnf -y install fedora-workstation-repositories
 sudo dnf -y config-manager --set-enabled google-chrome
 echo "Done"
@@ -170,18 +170,18 @@ echo "Done"
 echo
 
 ############################################################################
-echo "${style_blue}${style_bold}Install vscode c++/cmake extensions.${style_normal}"
+echo "${style_blue}${style_bold}Install VSCode C++/CMake extensions.${style_normal}"
 code --install-extension ms-vscode.cpptools
 code --install-extension ms-vscode.cmake-tools
 echo
 
-echo "${style_blue}${style_bold}Install vscode python support.${style_normal}"
+echo "${style_blue}${style_bold}Install VSCode Python support.${style_normal}"
 code --install-extension ms-python.python
 code --install-extension ms-python.vscode-pylance ms-toolsai.jupyter
 code --install-extension VisualStudioExptTeam.vscodeintellicode
 echo
 
-echo "${style_blue}${style_bold}Install vscode .net/C# related extensions.${style_normal}"
+echo "${style_blue}${style_bold}Install VSCode .NET/C# related extensions.${style_normal}"
 code --install-extension ms-dotnettools.csharp
 code --install-extension ms-dotnettools.csdevkit
 code --install-extension patcx.vscode-nuget-gallery
@@ -190,7 +190,7 @@ code --install-extension EditorConfig.EditorConfig
 code --install-extension formulahendry.dotnet-test-explorer
 echo
 
-echo "${style_blue}${style_bold}Install vscode useful extensions.${style_normal}"
+echo "${style_blue}${style_bold}Install VSCode useful extensions.${style_normal}"
 code --install-extension ms-vscode.hexeditor
 code --install-extension ms-azuretools.vscode-docker
 code --install-extension bierner.markdown-preview-github-styles
@@ -216,12 +216,12 @@ echo
 
 ############################################################################
 if [ ! -e /snap ]; then
-    echo "${style_blue}${style_bold}Make sure snapd supports --classic.${style_normal}"
+    echo "${style_blue}${style_bold}Make sure, snapd supports --classic.${style_normal}"
     sudo ln -sf /var/lib/snapd/snap /snap
     echo "Done"
 fi
 
-echo "${style_blue}${style_bold}Make sure snapd is started/ready for operation.${style_normal}"
+echo "${style_blue}${style_bold}Make sure, snapd is started/ready for operation.${style_normal}"
 sudo systemctl start snapd.seeded.service
 echo "Done"
 echo
@@ -255,7 +255,7 @@ echo
 
 ############################################################################
 # https://docs.flutter.dev/get-started/install/linux
-echo "${style_blue}${style_bold}Install flutter - may take a while.${style_normal}"
+echo "${style_blue}${style_bold}Install Flutter - may take a while.${style_normal}"
 sudo snap install flutter --classic
 # Somthing in here installs ${HOME}/snap...
 flutter sdk-path
@@ -265,7 +265,7 @@ flutter config --android-sdk ~/Android/Sdk
 flutter doctor
 echo
 
-echo "${style_blue}${style_bold}Install vscode flutter extension.${style_normal}"
+echo "${style_blue}${style_bold}Install VSCode Flutter extension.${style_normal}"
 code --install-extension Dart-Code.flutter
 echo
 
