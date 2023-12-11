@@ -177,7 +177,7 @@ echo
 
 echo "${style_blue}${style_bold}Install VSCode Python support.${style_normal}"
 code --install-extension ms-python.python
-code --install-extension ms-python.vscode-pylance ms-toolsai.jupyter
+code --install-extension ms-toolsai.jupyter
 code --install-extension VisualStudioExptTeam.vscodeintellicode
 echo
 
