@@ -34,6 +34,18 @@ set -e
 
 REPO_PATH=`dirname $0`
 
+
+# Prevent sudo password-entry timeout
+bash -c "while true; do sudo -v; sleep 60; done" &
+sudo_pid=$!
+
+function ctrl_c() {
+    echo "CTRL+C pressed..."
+    kill -9 $sudo_pid
+    exit
+}
+trap ctrl_c INT
+
 echo "${style_yellow}Enter sudo password:${style_normal}"
 sudo echo
 
@@ -289,10 +301,13 @@ echo
 #done
 
 
+# Kill sudo passwort-timeout prevention
+kill -9 $sudo_pid
+
+
 ############################################################################
 echo
 echo
 echo "${style_yellow}${style_bold}Log off - HIGLY RECCOMENDED !!!!!${style_normal}"
 xfce4-session-logout
 echo
-
