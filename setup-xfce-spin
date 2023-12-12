@@ -155,6 +155,7 @@ sudo dnf -y install \
     xmlstarlet \
     python3-pylint \
     python3-pytest \
+    python3-lsp-server \
     \
     gtest-devel \
     kernel-devel \
