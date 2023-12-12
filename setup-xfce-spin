@@ -273,7 +273,7 @@ sudo snap install flutter --classic
 # Somthing in here installs ${HOME}/snap...
 flutter sdk-path
 flutter config --no-analytics
-flutter --disable-analytics
+flutter --disable-telemetry
 flutter config --android-sdk ~/Android/Sdk
 flutter doctor
 echo
