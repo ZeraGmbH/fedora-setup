@@ -173,7 +173,9 @@ sudo dnf -y install \
     dotnet-sdk-6.0 \
     dotnet-sdk-7.0 \
     nuget \
-    nunit
+    nunit \
+    minicom \
+    putty
 echo
 
 ############################################################################
