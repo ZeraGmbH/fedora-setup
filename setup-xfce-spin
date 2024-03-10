@@ -174,6 +174,7 @@ sudo dnf -y install \
     dotnet-sdk-7.0 \
     nuget \
     nunit \
+    latexmk texlive-scheme-full \
     minicom \
     putty
 echo
@@ -216,6 +217,7 @@ code --install-extension formulahendry.auto-close-tag
 code --install-extension mohsen1.prettify-json
 code --install-extension jebbs.plantuml
 code --install-extension streetsidesoftware.code-spell-checker
+code --install-extension James-Yu.latex-workshop
 echo
 
 
