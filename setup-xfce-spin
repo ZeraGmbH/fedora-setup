@@ -176,7 +176,10 @@ sudo dnf -y install \
     nunit \
     latexmk texlive-scheme-full \
     minicom \
-    putty
+    putty \
+    ncurses-compat-libs
+
+# ncurses-compat-libs for TI-DSP see https://www.ti.com/tool/CCSTUDIO
 echo
 
 ############################################################################
