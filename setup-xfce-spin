@@ -183,6 +183,13 @@ sudo dnf -y install \
 echo
 
 ############################################################################
+echo "${style_blue}${style_bold}Add to group dialout.${style_normal}"
+ME=$(whoami)
+sudo usermod -aG dialout "$ME"
+echo "Done"
+echo
+
+############################################################################
 echo "${style_blue}${style_bold}Quieten docker / podman notes.${style_normal}"
 sudo touch /etc/containers/nodocker
 echo "Done"
