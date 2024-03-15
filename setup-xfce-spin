@@ -176,7 +176,10 @@ sudo dnf -y install \
     nunit \
     minicom \
     putty \
-    ncurses-compat-libs
+    ncurses-compat-libs \
+    libusb-compat-0.1 \
+    GConf2 \
+    glibc.i686
 
 # ncurses-compat-libs for TI-DSP see https://www.ti.com/tool/CCSTUDIO
 echo
