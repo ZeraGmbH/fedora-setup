@@ -184,6 +184,8 @@ sudo dnf -y install \
     GConf2 \
     glibc.i686
 
+sudo sudo dnf -y remove bash-color-prompt || true
+
 # ncurses-compat-libs for TI-DSP see https://www.ti.com/tool/CCSTUDIO
 echo
 
