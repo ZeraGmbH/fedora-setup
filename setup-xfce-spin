@@ -145,6 +145,7 @@ sudo dnf -y install \
     qt-devel \
     kf5-networkmanager-qt-devel kf5-modemmanager-qt-devel kf5-syntax-highlighting-devel \
     qwt-qt5-devel \
+    qtzeroconf-devel \
     \
     flatbuffers-devel flatbuffers-compiler protobuf-devel protobuf-compiler \
     jq \
@@ -177,7 +178,7 @@ sudo dnf -y install \
     nuget \
     nunit \
     minicom \
-    putty \
+    putty telnet \
     ncurses-compat-libs \
     libusb-compat-0.1 \
     GConf2 \
