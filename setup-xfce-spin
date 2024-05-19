@@ -171,7 +171,7 @@ sudo dnf -y install \
     cppcheck \
     code \
     snapd \
-    wireshark \
+    wireshark nmap \
     dotnet-sdk-6.0 \
     dotnet-sdk-7.0 \
     nuget \
