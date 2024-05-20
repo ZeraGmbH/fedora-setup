@@ -109,6 +109,7 @@ sudo dnf -y install \
     libreoffice \
     google-chrome-stable \
     firefox \
+    gvfs-smb \
     \
     qt-creator \
     valgrind \
