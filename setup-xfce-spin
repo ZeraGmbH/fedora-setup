@@ -75,14 +75,6 @@ echo "${style_blue}${style_bold}Update packages...${style_normal}"
 sudo dnf -y update
 echo
 
-# see https://code.visualstudio.com/docs/setup/linux
-if [ ! -e /etc/yum.repos.d/vscode.repo ]; then
-    echo "${style_blue}${style_bold}Prepare VSCode.${style_normal}"
-    sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-    sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
-    echo
-fi
-
 ############################################################################
 # see https://docs.fedoraproject.org/en-US/quick-docs/installing-chromium-or-google-chrome-browsers/
 echo "${style_blue}${style_bold}Prepare Google Chrome.${style_normal}"
@@ -170,7 +162,6 @@ sudo dnf -y install \
     krdc \
     kcachegrind \
     cppcheck \
-    code \
     snapd \
     wireshark nmap \
     dotnet-sdk-6.0 \
