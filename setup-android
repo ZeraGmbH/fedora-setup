@@ -1,0 +1,125 @@
+#!/bin/bash
+
+# set terminal styles
+if [ -t 1 ] ; then # are we on terminal?
+    # tput available?
+    if [ ! "x`which tput 2>/dev/null`" = "x" ] ; then
+        # supports colors ?
+        ncolors=`tput colors`
+        if [ -n "$ncolors" -a  $ncolors -ge 8 ] ; then
+            style_bold="`tput bold`"
+            style_underline="`tput smul`"
+            style_standout="`tput smso`"
+            style_normal="`tput sgr0`"
+            style_black="`tput setaf 0`"
+            style_red="`tput setaf 1`"
+            style_green="`tput setaf 2`"
+            style_yellow="`tput setaf 3`"
+            style_blue="`tput setaf 4`"
+            style_magenta="`tput setaf 5`"
+            style_cyan="`tput setaf 6`"
+            style_white="`tput setaf 7`"
+        fi
+    fi
+fi
+
+CURRUSER=`id -u`
+if [ $CURRUSER = "0" ]; then
+    echo "${style_red}Do not run this script as root - you will be asked for sudo password!${style_normal}"
+    exit
+fi
+
+# exit when any command fails
+set -e
+
+# Prevent sudo password-entry timeout
+bash -c "while true; do sudo -v; sleep 60; done" &
+sudo_pid=$!
+
+function ctrl_c() {
+    echo "CTRL+C pressed..."
+    kill -9 $sudo_pid
+    exit
+}
+trap ctrl_c INT
+
+echo "${style_yellow}Enter sudo password:${style_normal}"
+sudo echo
+
+############################################################################
+echo "${style_blue}${style_bold}Install angular.${style_normal}"
+sudo npm install -g @angular/cli
+echo
+
+############################################################################
+echo "${style_blue}${style_bold}Install newman/postman.${style_normal}"
+sudo npm install -g newman postman
+echo
+
+############################################################################
+if [ ! -e /snap ]; then
+    echo "${style_blue}${style_bold}Make sure, snapd supports --classic.${style_normal}"
+    sudo ln -sf /var/lib/snapd/snap /snap
+    echo "Done"
+fi
+
+echo "${style_blue}${style_bold}Make sure, snapd is started/ready for operation.${style_normal}"
+sudo systemctl start snapd.seeded.service
+echo "Done"
+echo
+
+echo "${style_blue}${style_bold}Force snapd environment on first install of snapd.${style_normal}"
+# This is what /etc/bashrc does
+. /etc/profile.d/snapd.sh
+echo "Done"
+echo
+
+echo "${style_blue}${style_bold}Check for snapd in PATH.${style_normal}"
+SNAP_ENV_FOUND=0
+echo "$PATH" | grep -q 'snapd' && SNAP_ENV_FOUND=1
+if [ "$SNAP_ENV_FOUND" = "1" ]; then
+    echo "OK"
+else
+    echo "${style_red}${style_bold}The environment for snap was not (yet) set."
+    echo "Log off (or better restart) and run this script again to install snaps.${style_normal}"
+    exit
+fi
+echo
+
+echo "${style_blue}${style_bold}Refreshing snap.${style_normal}"
+sudo snap refresh
+echo
+
+############################################################################
+echo "${style_blue}${style_bold}Install Android Studio (SDK is loaded on first start).${style_normal}"
+sudo snap install android-studio --classic
+echo
+
+############################################################################
+# https://docs.flutter.dev/get-started/install/linux
+echo "${style_blue}${style_bold}Install Flutter - may take a while.${style_normal}"
+sudo snap install flutter --classic
+# Something in here installs ${HOME}/snap...
+flutter upgrade
+flutter sdk-path
+flutter config --no-analytics
+flutter --disable-analytics
+flutter config --android-sdk ~/Android/Sdk
+flutter doctor
+echo
+
+echo "${style_blue}${style_bold}Install VSCode Flutter extension.${style_normal}"
+code --install-extension Dart-Code.flutter
+echo
+
+
+# Kill sudo passwort-timeout prevention
+kill -9 $sudo_pid
+
+
+############################################################################
+echo
+echo
+echo "${style_yellow}${style_bold}Log off - HIGLY RECOMMENDED !!!!!${style_normal}"
+xfce4-session-logout
+echo

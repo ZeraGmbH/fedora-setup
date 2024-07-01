@@ -1,0 +1,95 @@
+#!/bin/bash
+
+# set terminal styles
+if [ -t 1 ] ; then # are we on terminal?
+    # tput available?
+    if [ ! "x`which tput 2>/dev/null`" = "x" ] ; then
+        # supports colors ?
+        ncolors=`tput colors`
+        if [ -n "$ncolors" -a  $ncolors -ge 8 ] ; then
+            style_bold="`tput bold`"
+            style_underline="`tput smul`"
+            style_standout="`tput smso`"
+            style_normal="`tput sgr0`"
+            style_black="`tput setaf 0`"
+            style_red="`tput setaf 1`"
+            style_green="`tput setaf 2`"
+            style_yellow="`tput setaf 3`"
+            style_blue="`tput setaf 4`"
+            style_magenta="`tput setaf 5`"
+            style_cyan="`tput setaf 6`"
+            style_white="`tput setaf 7`"
+        fi
+    fi
+fi
+
+CURRUSER=`id -u`
+if [ $CURRUSER = "0" ]; then
+    echo "${style_red}Do not run this script as root - you will be asked for sudo password!${style_normal}"
+    exit
+fi
+
+# exit when any command fails
+set -e
+
+# Prevent sudo password-entry timeout
+bash -c "while true; do sudo -v; sleep 60; done" &
+sudo_pid=$!
+
+function ctrl_c() {
+    echo "CTRL+C pressed..."
+    kill -9 $sudo_pid
+    exit
+}
+trap ctrl_c INT
+
+echo "${style_yellow}Enter sudo password:${style_normal}"
+sudo echo
+
+############################################################################
+echo "${style_blue}${style_bold}Install code package...${style_normal}"
+sudo dnf -y install \
+    code \
+
+############################################################################
+echo "${style_blue}${style_bold}Install VSCode C++/CMake extensions.${style_normal}"
+code --install-extension ms-vscode.cpptools
+code --install-extension ms-vscode.cmake-tools
+echo
+
+echo "${style_blue}${style_bold}Install VSCode Python support.${style_normal}"
+code --install-extension ms-python.python
+code --install-extension ms-toolsai.jupyter
+code --install-extension VisualStudioExptTeam.vscodeintellicode
+echo
+
+echo "${style_blue}${style_bold}Install VSCode .NET/C# related extensions.${style_normal}"
+code --install-extension ms-dotnettools.csharp
+code --install-extension ms-dotnettools.csdevkit
+code --install-extension patcx.vscode-nuget-gallery
+code --install-extension jmrog.vscode-nuget-package-manager
+code --install-extension EditorConfig.EditorConfig
+code --install-extension formulahendry.dotnet-test-explorer
+echo
+
+echo "${style_blue}${style_bold}Install VSCode useful extensions.${style_normal}"
+code --install-extension ms-vscode.hexeditor
+code --install-extension ms-azuretools.vscode-docker
+code --install-extension bierner.markdown-preview-github-styles
+code --install-extension GitHub.vscode-github-actions
+code --install-extension  ms-vscode-remote.vscode-remote-extensionpack
+code --install-extension formulahendry.auto-rename-tag
+code --install-extension formulahendry.auto-close-tag
+code --install-extension mohsen1.prettify-json
+code --install-extension jebbs.plantuml
+code --install-extension streetsidesoftware.code-spell-checker
+echo
+
+# Kill sudo passwort-timeout prevention
+kill -9 $sudo_pid
+
+
+############################################################################
+echo
+echo
+echo "${style_yellow}${style_bold}Finished successfully!${style_normal}"
