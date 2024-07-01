@@ -203,108 +203,6 @@ echo "Done"
 echo
 
 ############################################################################
-echo "${style_blue}${style_bold}Install VSCode C++/CMake extensions.${style_normal}"
-code --install-extension ms-vscode.cpptools
-code --install-extension ms-vscode.cmake-tools
-echo
-
-echo "${style_blue}${style_bold}Install VSCode Python support.${style_normal}"
-code --install-extension ms-python.python
-code --install-extension ms-toolsai.jupyter
-code --install-extension VisualStudioExptTeam.vscodeintellicode
-echo
-
-echo "${style_blue}${style_bold}Install VSCode .NET/C# related extensions.${style_normal}"
-code --install-extension ms-dotnettools.csharp
-code --install-extension ms-dotnettools.csdevkit
-code --install-extension patcx.vscode-nuget-gallery
-code --install-extension jmrog.vscode-nuget-package-manager
-code --install-extension EditorConfig.EditorConfig
-code --install-extension formulahendry.dotnet-test-explorer
-echo
-
-echo "${style_blue}${style_bold}Install VSCode useful extensions.${style_normal}"
-code --install-extension ms-vscode.hexeditor
-code --install-extension ms-azuretools.vscode-docker
-code --install-extension bierner.markdown-preview-github-styles
-code --install-extension GitHub.vscode-github-actions
-code --install-extension  ms-vscode-remote.vscode-remote-extensionpack
-code --install-extension formulahendry.auto-rename-tag
-code --install-extension formulahendry.auto-close-tag
-code --install-extension mohsen1.prettify-json
-code --install-extension jebbs.plantuml
-code --install-extension streetsidesoftware.code-spell-checker
-echo
-
-
-############################################################################
-echo "${style_blue}${style_bold}Install angular.${style_normal}"
-sudo npm install -g @angular/cli
-echo
-
-############################################################################
-echo "${style_blue}${style_bold}Install newman/postman.${style_normal}"
-sudo npm install -g newman postman
-echo
-
-############################################################################
-if [ ! -e /snap ]; then
-    echo "${style_blue}${style_bold}Make sure, snapd supports --classic.${style_normal}"
-    sudo ln -sf /var/lib/snapd/snap /snap
-    echo "Done"
-fi
-
-echo "${style_blue}${style_bold}Make sure, snapd is started/ready for operation.${style_normal}"
-sudo systemctl start snapd.seeded.service
-echo "Done"
-echo
-
-echo "${style_blue}${style_bold}Force snapd environment on first install of snapd.${style_normal}"
-# This is what /etc/bashrc does
-. /etc/profile.d/snapd.sh
-echo "Done"
-echo
-
-echo "${style_blue}${style_bold}Check for snapd in PATH.${style_normal}"
-SNAP_ENV_FOUND=0
-echo "$PATH" | grep -q 'snapd' && SNAP_ENV_FOUND=1
-if [ "$SNAP_ENV_FOUND" = "1" ]; then
-    echo "OK"
-else
-    echo "${style_red}${style_bold}The environment for snap was not (yet) set."
-    echo "Log off (or better restart) and run this script again to install snaps.${style_normal}"
-    exit
-fi
-echo
-
-echo "${style_blue}${style_bold}Refreshing snap.${style_normal}"
-sudo snap refresh
-echo
-
-############################################################################
-echo "${style_blue}${style_bold}Install Android Studio (SDK is loaded on first start).${style_normal}"
-sudo snap install android-studio --classic
-echo
-
-############################################################################
-# https://docs.flutter.dev/get-started/install/linux
-echo "${style_blue}${style_bold}Install Flutter - may take a while.${style_normal}"
-sudo snap install flutter --classic
-# Something in here installs ${HOME}/snap...
-flutter upgrade
-flutter sdk-path
-flutter config --no-analytics
-flutter --disable-analytics
-flutter config --android-sdk ~/Android/Sdk
-flutter doctor
-echo
-
-echo "${style_blue}${style_bold}Install VSCode Flutter extension.${style_normal}"
-code --install-extension Dart-Code.flutter
-echo
-
-
-############################################################################
 #echo
 #echo "${style_yellow}${style_bold}In case you are asked often for unlocking password:${style_normal}"
 #while true; do
@@ -330,6 +228,6 @@ kill -9 $sudo_pid
 ############################################################################
 echo
 echo
-echo "${style_yellow}${style_bold}Log off - HIGLY RECCOMENDED !!!!!${style_normal}"
+echo "${style_yellow}${style_bold}Log off - HIGLY RECOMMENDED !!!!!${style_normal}"
 xfce4-session-logout
 echo
