@@ -179,7 +179,6 @@ sudo dnf -y install \
     nunit \
     minicom \
     putty telnet \
-    krdb \
     ncurses-compat-libs \
     libusb-compat-0.1 \
     GConf2 \
