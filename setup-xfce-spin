@@ -112,7 +112,7 @@ sudo dnf -y install \
     cmake git clazy \
     systemd-devel \
     openssl-devel \
-    python3-devel python3-numpy \
+    python3-devel python3-numpy python3-passlib \
     xsd xerces-c-devel \
     fftw-devel \
     php-jsonlint python3-jsonschema \
