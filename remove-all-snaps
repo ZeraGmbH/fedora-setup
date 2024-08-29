@@ -38,10 +38,3 @@ rm -rf ~/Android*
 echo
 
 
-############################################################################
-echo
-echo
-echo "${style_yellow}${style_bold}Log off - HIGLY RECCOMENDED !!!!!${style_normal}"
-xfce4-session-logout
-echo
-
