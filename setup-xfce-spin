@@ -116,7 +116,6 @@ sudo dnf -y install \
     krdc \
     kcachegrind \
     cppcheck \
-    snapd \
     wireshark nmap \
     dotnet-sdk-6.0 \
     dotnet-sdk-7.0 \

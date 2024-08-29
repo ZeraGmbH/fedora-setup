@@ -4,6 +4,11 @@
 . `dirname $0`/common.inc
 
 ############################################################################
+echo "${style_blue}${style_bold}Install snap.${style_normal}"
+sudo dnf -y install snapd
+echo
+
+############################################################################
 echo "${style_blue}${style_bold}Install angular.${style_normal}"
 sudo npm install -g @angular/cli
 echo
