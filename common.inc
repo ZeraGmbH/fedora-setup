@@ -1,3 +1,5 @@
+#! /bin/bash
+
 # set terminal styles
 if [ -t 1 ] ; then # are we on terminal?
     # tput available?
