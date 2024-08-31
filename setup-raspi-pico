@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# includes
+. `dirname $0`/common.inc
+
+############################################################################
+
+echo "${style_blue}${style_bold}Install arm-none-eabi-gdb aka gdb-multiarch...${style_normal}"
+sudo dnf -y install dnf-plugins-core
+sudo dnf -y copr enable rleh/arm-none-eabi-gdb
+sudo dnf -y install arm-none-eabi-gdb
+
+
