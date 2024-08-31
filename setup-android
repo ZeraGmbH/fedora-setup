@@ -2,6 +2,7 @@
 
 # includes
 . `dirname $0`/common.inc
+. `dirname $0`/vscode.inc
 
 ############################################################################
 echo "${style_blue}${style_bold}Install snap.${style_normal}"
@@ -70,10 +71,12 @@ flutter config --android-sdk ~/Android/Sdk
 flutter doctor
 echo
 
+############################################################################
+install_bare_vscode
+
 echo "${style_blue}${style_bold}Install VSCode Flutter extension.${style_normal}"
 code --install-extension Dart-Code.flutter
 echo
-
 
 # Kill sudo passwort-timeout prevention
 kill -9 $sudo_pid

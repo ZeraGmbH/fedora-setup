@@ -2,6 +2,7 @@
 
 # includes
 . `dirname $0`/common.inc
+. `dirname $0`/vscode.inc
 
 ############################################################################
 echo "${style_blue}${style_bold}Install arm-none-eabi-gdb aka gdb-multiarch...${style_normal}"
@@ -22,10 +23,9 @@ sudo udevadm control --reload-rules
 echo
 
 ############################################################################
-echo "${style_blue}${style_bold}Install Raspberry Pi Pico vscode extension...${style_normal}"
-if ! command -v code &> /dev/null; then
-    `dirname $0`/setup-vs-code
-fi
+install_bare_vscode
+
+echo "${style_blue}${style_bold}Install Raspberry Pi Pico VSCode extension...${style_normal}"
 code --install-extension raspberry-pi.raspberry-pi-pico
 echo
 
