@@ -1,0 +1,13 @@
+# stolen from / extended to Pico 2
+# https://gist.githubusercontent.com/tjvr/3c406bddfe9ae0a3860a3a5e6b381a93/raw/78873b8f590540dd0771eeec61675a4af63c1685/99-pico.rules
+# /etc/udev/rules.d/99-pico.rules
+
+# Make an RP2040 in BOOTSEL mode writable by all users, so you can `picotool`
+# without `sudo`. 
+SUBSYSTEM=="usb", ATTRS{idVendor}=="2e8a", ATTRS{idProduct}=="0003", MODE="0666"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="2e8a", ATTRS{idProduct}=="000f", MODE="0666"
+
+# Symlink an RP2040 running MicroPython from /dev/pico.
+#
+# Then you can `mpr connect $(realpath /dev/pico)`.
+SUBSYSTEM=="tty", ATTRS{idVendor}=="2e8a", ATTRS{idProduct}=="0005", SYMLINK+="pico"

@@ -4,10 +4,29 @@
 . `dirname $0`/common.inc
 
 ############################################################################
-
 echo "${style_blue}${style_bold}Install arm-none-eabi-gdb aka gdb-multiarch...${style_normal}"
 sudo dnf -y install dnf-plugins-core
 sudo dnf -y copr enable rleh/arm-none-eabi-gdb
 sudo dnf -y install arm-none-eabi-gdb
+if ! grep -i -q 'alias gdb-multiarch' ${HOME}/.bashrc; then
+    echo "${style_blue}${style_bold}Create gdb-multiarch alias...${style_normal}"
+    echo >> ${HOME}/.bashrc
+    echo 'alias gdb-multiarch=arm-none-eabi-gdb' >> ${HOME}/.bashrc
+fi
+echo
+
+############################################################################
+echo "${style_blue}${style_bold}Install Raspberry Pi Pico udev-rules...${style_normal}"
+sudo cp `dirname $0`/udev-rules/99-pico.rules /etc/udev/rules.d/
+sudo udevadm control --reload-rules
+echo
+
+############################################################################
+echo "${style_blue}${style_bold}Install Raspberry Pi Pico vscode extension...${style_normal}"
+if ! command -v code &> /dev/null; then
+    `dirname $0`/setup-vs-code
+fi
+code --install-extension raspberry-pi.raspberry-pi-pico
+echo
 
 
