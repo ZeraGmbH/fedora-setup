@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # includes
-. `dirname $0`/common.inc
-. `dirname $0`/vscode.inc
+. `dirname $0`/includes/common.inc
+. `dirname $0`/includes/vscode.inc
 
 install_bare_vscode
 
