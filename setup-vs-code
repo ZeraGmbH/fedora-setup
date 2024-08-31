@@ -18,15 +18,6 @@ code --install-extension ms-toolsai.jupyter
 code --install-extension VisualStudioExptTeam.vscodeintellicode
 echo
 
-echo "${style_blue}${style_bold}Install VSCode .NET/C# related extensions.${style_normal}"
-code --install-extension ms-dotnettools.csharp
-code --install-extension ms-dotnettools.csdevkit
-code --install-extension patcx.vscode-nuget-gallery
-code --install-extension jmrog.vscode-nuget-package-manager
-code --install-extension EditorConfig.EditorConfig
-code --install-extension formulahendry.dotnet-test-explorer
-echo
-
 echo "${style_blue}${style_bold}Install VSCode useful extensions.${style_normal}"
 code --install-extension ms-vscode.hexeditor
 code --install-extension ms-azuretools.vscode-docker

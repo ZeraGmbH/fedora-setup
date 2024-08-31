@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# includes
+. `dirname $0`/common.inc
+. `dirname $0`/vscode.inc
+
+############################################################################
+echo "${style_blue}${style_bold}Install dotnet packages...${style_normal}"
+sudo dnf -y install \
+    dotnet-sdk-*
+
+############################################################################
+install_bare_vscode
+
+echo "${style_blue}${style_bold}Install VSCode .NET/C# related extensions.${style_normal}"
+code --install-extension ms-dotnettools.csharp
+code --install-extension ms-dotnettools.csdevkit
+code --install-extension patcx.vscode-nuget-gallery
+code --install-extension jmrog.vscode-nuget-package-manager
+code --install-extension EditorConfig.EditorConfig
+code --install-extension formulahendry.dotnet-test-explorer
+echo
+
