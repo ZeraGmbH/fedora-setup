@@ -145,11 +145,6 @@ echo "Done"
 echo
 
 ############################################################################
-# Kill sudo passwort-timeout prevention
-kill -9 $sudo_pid
-
-
-############################################################################
 echo
 echo
 echo "${style_yellow}${style_bold}Log off - HIGLY RECOMMENDED !!!!!${style_normal}"

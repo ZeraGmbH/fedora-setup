@@ -34,18 +34,6 @@ set -e
 
 REPO_PATH=`dirname $0`
 
-
-# Prevent sudo password-entry timeout
-bash -c "while true; do sudo -v; sleep 60; done" &
-sudo_pid=$!
-
-function ctrl_c() {
-    echo "CTRL+C pressed..."
-    kill -9 $sudo_pid
-    exit
-}
-trap ctrl_c INT
-
 echo "${style_yellow}Enter sudo password:${style_normal}"
 sudo echo
 
