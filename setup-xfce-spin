@@ -12,7 +12,7 @@ echo
 
 if [ ! -e ${HOME}/.ssh/id_rsa.pub ]; then
     echo "Setup ssh key - ${style_yellow}Answer ssh-keygen's questions:${style_normal}"
-    ssh-keygen
+    ssh-keygen -f ${HOME}/.ssh/id_rsa
     echo
 fi
 
