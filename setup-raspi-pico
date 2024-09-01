@@ -14,6 +14,7 @@ if ! grep -i -q 'alias gdb-multiarch' ${HOME}/.bashrc; then
     echo >> ${HOME}/.bashrc
     echo 'alias gdb-multiarch=arm-none-eabi-gdb' >> ${HOME}/.bashrc
 fi
+sudo dnf -y install hidapi
 echo
 
 ############################################################################
