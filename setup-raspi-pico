@@ -9,11 +9,12 @@ echo "${style_blue}${style_bold}Install arm-none-eabi-gdb aka gdb-multiarch...${
 sudo dnf -y install dnf-plugins-core
 sudo dnf -y copr enable rleh/arm-none-eabi-gdb
 sudo dnf -y install arm-none-eabi-gdb
-if ! grep -i -q 'alias gdb-multiarch' ${HOME}/.bashrc; then
-    echo "${style_blue}${style_bold}Create gdb-multiarch alias...${style_normal}"
-    echo >> ${HOME}/.bashrc
-    echo 'alias gdb-multiarch=arm-none-eabi-gdb' >> ${HOME}/.bashrc
-fi
+
+sudo dnf -y install arm-none-eabi-binutils*
+sudo ln -sf /usr/bin/arm-none-eabi-gdb /usr/bin/gdb-multiarch
+sudo ln -sf /usr/bin/arm-none-eabi-objdump /usr/bin/objdump-multiarch
+sudo ln -sf /usr/bin/arm-none-eabi-nm /usr/bin/nm-multiarch
+
 sudo dnf -y install hidapi
 echo
 
@@ -30,4 +31,7 @@ echo "${style_blue}${style_bold}Install Raspberry Pi Pico VSCode extension...${s
 code --install-extension raspberry-pi.raspberry-pi-pico
 echo
 
+for file in `find "$HOME/.vscode" -name 'pico_project.py'`; do
+    sed -i 's|${{command:raspberry-pi-pico.getGDBPath}}|/usr/bin/gdb-multiarch|g' "$file"
+done
 
