@@ -51,6 +51,7 @@ sudo dnf -y install \
     avahi-tools \
     blueman \
     gedit \
+    evince \
     libreoffice \
     google-chrome-stable \
     firefox \
