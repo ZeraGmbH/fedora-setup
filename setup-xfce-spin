@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # includes
-. `dirname $0`/common.inc
+. `dirname $0`/includes/common.inc
 
 ############################################################################
 echo "${style_blue}${style_bold}Adjust xfce4-terminal settings.${style_normal}"

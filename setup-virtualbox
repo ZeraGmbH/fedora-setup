@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # includes
-. `dirname $0`/common.inc
+. `dirname $0`/includes/common.inc
 
 ############################################################################
 # see https://www.virtualbox.org/wiki/Linux_Downloads
