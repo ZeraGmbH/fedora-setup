@@ -52,6 +52,7 @@ sudo dnf -y install \
     blueman \
     gedit \
     evince \
+    file-roller \
     libreoffice \
     google-chrome-stable \
     firefox \
