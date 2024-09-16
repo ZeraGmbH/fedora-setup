@@ -9,11 +9,23 @@ echo "${style_blue}${style_bold}Install arm-none-eabi-gdb aka gdb-multiarch...${
 sudo dnf -y install dnf-plugins-core
 sudo dnf -y copr enable rleh/arm-none-eabi-gdb
 sudo dnf -y install arm-none-eabi-gdb
+echo
 
 ############################################################################
-echo "${style_blue}${style_bold}Build RPi-fork of openocd...${style_normal}"
+echo "${style_blue}${style_bold}Install VSCode...${style_normal}"
+install_bare_vscode
+echo
+
+############################################################################
+echo "${style_blue}${style_bold}Install Raspberry Pi Pico VSCode extension...${style_normal}"
+code --install-extension raspberry-pi.raspberry-pi-pico
+echo
+
+############################################################################
+echo "${style_blue}${style_bold}Build/Install RPi-fork of openocd...${style_normal}"
 sudo dnf -y install git-core libgpiod autoconf automake pkgconf libtool make gcc
-# see https://src.fedoraproject.org/rpms/openocd/blob/rawhide/f/openocd.spec
+# for build details - or stolen from -  see
+# https://src.fedoraproject.org/rpms/openocd/blob/rawhide/f/openocd.spec
 sudo dnf -y install capstone-devel hidapi-devel jimtcl-devel libjaylink-devel libftdi-devel libusbx-devel
 rm -rf /tmp/openocd-rpi-pico
 git clone --recurse-submodules https://github.com/raspberrypi/openocd.git /tmp/openocd-rpi-pico
@@ -67,6 +79,7 @@ autoreconf -i
 
 make -j4
 popd
+echo
 
 ############################################################################
 echo "${style_blue}${style_bold}Install arm-none-eabi-binutils...${style_normal}"
@@ -74,15 +87,14 @@ sudo dnf -y install arm-none-eabi-binutils*
 sudo ln -sf /usr/bin/arm-none-eabi-gdb /usr/bin/gdb-multiarch
 sudo ln -sf /usr/bin/arm-none-eabi-objdump /usr/bin/objdump-multiarch
 sudo ln -sf /usr/bin/arm-none-eabi-nm /usr/bin/nm-multiarch
-
-sudo dnf -y install hidapi
 echo
 
 ############################################################################
-echo "${style_blue}${style_bold}Install additional packages to run examples...${style_normal}"
-sudo dnf -y install \
-    python3-pyusb
-
+echo "${style_blue}${style_bold}Adjust debugger location in pico VSCode plugin...${style_normal}"
+for file in `find "$HOME/.vscode" -name 'pico_project.py'`; do
+    sed -i 's|${{command:raspberry-pi-pico.getGDBPath}}|/usr/bin/gdb-multiarch|g' "$file"
+done
+echo
 
 ############################################################################
 echo "${style_blue}${style_bold}Install Raspberry Pi Pico udev-rules...${style_normal}"
@@ -91,13 +103,7 @@ sudo udevadm control --reload-rules
 echo
 
 ############################################################################
-install_bare_vscode
-
-echo "${style_blue}${style_bold}Install Raspberry Pi Pico VSCode extension...${style_normal}"
-code --install-extension raspberry-pi.raspberry-pi-pico
-echo
-
-for file in `find "$HOME/.vscode" -name 'pico_project.py'`; do
-    sed -i 's|${{command:raspberry-pi-pico.getGDBPath}}|/usr/bin/gdb-multiarch|g' "$file"
-done
+echo "${style_blue}${style_bold}Install additional packages to run examples...${style_normal}"
+sudo dnf -y install \
+    python3-pyusb
 
