@@ -10,6 +10,65 @@ sudo dnf -y install dnf-plugins-core
 sudo dnf -y copr enable rleh/arm-none-eabi-gdb
 sudo dnf -y install arm-none-eabi-gdb
 
+############################################################################
+echo "${style_blue}${style_bold}Build RPi-fork of openocd...${style_normal}"
+sudo dnf -y install git-core libgpiod autoconf automake pkgconf libtool make gcc
+# see https://src.fedoraproject.org/rpms/openocd/blob/rawhide/f/openocd.spec
+sudo dnf -y install capstone-devel hidapi-devel jimtcl-devel libjaylink-devel libftdi-devel libusbx-devel
+rm -rf /tmp/openocd-rpi-pico
+git clone --recurse-submodules https://github.com/raspberrypi/openocd.git /tmp/openocd-rpi-pico
+pushd /tmp/openocd-rpi-pico
+libtoolize
+autoreconf -i
+./configure \
+    --disable-werror \
+    --enable-static \
+    --disable-shared \
+    --enable-dummy \
+    --enable-ftdi \
+    --enable-stlink \
+    --enable-ti-icdi \
+    --enable-ulink \
+    --enable-usb-blaster-2 \
+    --enable-ft232r \
+    --enable-vsllink \
+    --enable-xds110 \
+    --enable-cmsis-dap-v2 \
+    --enable-osbdm \
+    --enable-opendous \
+    --enable-aice \
+    --enable-usbprog \
+    --enable-rlink \
+    --enable-armjtagew \
+    --enable-cmsis-dap \
+    --enable-nulink \
+    --enable-kitprog \
+    --enable-usb-blaster \
+    --enable-presto \
+    --enable-openjtag \
+    --enable-jlink \
+    --enable-parport \
+    --enable-jtag_vpi \
+    --enable-jtag_dpi \
+    --enable-ioutil \
+    --enable-amtjtagaccel \
+    --enable-ep39xx \
+    --enable-at91rm9200 \
+    --enable-gw16012 \
+    --enable-oocd_trace \
+    --enable-buspirate \
+    --enable-sysfsgpio \
+    --enable-esp-usb-jtag \
+    --enable-xlnx-pcie-xvc \
+    --enable-remote-bitbang \
+    --disable-internal-jimtcl \
+    --disable-doxygen-html \
+    --with-capstone
+
+make -j4
+popd
+
+############################################################################
 echo "${style_blue}${style_bold}Install arm-none-eabi-binutils...${style_normal}"
 sudo dnf -y install arm-none-eabi-binutils*
 sudo ln -sf /usr/bin/arm-none-eabi-gdb /usr/bin/gdb-multiarch
