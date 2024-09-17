@@ -12,6 +12,11 @@ sudo dnf -y install arm-none-eabi-gdb
 echo
 
 ############################################################################
+echo "${style_blue}${style_bold}Install gdb-gdbserver...${style_normal}"
+sudo dnf -y install gdb-gdbserver
+echo
+
+############################################################################
 echo "${style_blue}${style_bold}Install VSCode...${style_normal}"
 install_bare_vscode
 echo
@@ -23,10 +28,11 @@ echo
 
 ############################################################################
 echo "${style_blue}${style_bold}Build/Install RPi-fork of openocd...${style_normal}"
-sudo dnf -y install git-core libgpiod autoconf automake pkgconf libtool make gcc
+sudo dnf -y install git-core autoconf automake pkgconf libtool make gcc
 # for build details - or stolen from -  see
-# https://src.fedoraproject.org/rpms/openocd/blob/rawhide/f/openocd.spec
-sudo dnf -y install capstone-devel hidapi-devel jimtcl-devel libjaylink-devel libftdi-devel libusbx-devel
+# * https://src.fedoraproject.org/rpms/openocd/blob/rawhide/f/openocd.spec
+# * https://github.com/raspberrypi/pico-vscode/issues/84
+sudo dnf -y install capstone-devel hidapi-devel jimtcl-devel libjaylink-devel libftdi-devel libusbx-devel libgpiod-devel
 rm -rf /tmp/openocd-rpi-pico
 git clone --recurse-submodules https://github.com/raspberrypi/openocd.git /tmp/openocd-rpi-pico
 pushd /tmp/openocd-rpi-pico
@@ -75,10 +81,26 @@ autoreconf -i
     --enable-remote-bitbang \
     --disable-internal-jimtcl \
     --disable-doxygen-html \
-    --with-capstone
+    --with-capstone \
+    --enable-dmem \
+    --enable-bcm2835gpio
 
 make -j4
 popd
+echo
+
+############################################################################
+echo "${style_blue}${style_bold}Copy compatible openocd -> pico-sdk...${style_normal}"
+PICO_OPENOCD=`find "$HOME/.pico-sdk" -type f -executable -name openocd`
+PICO_OPENOCD_ON_FEDORA=`find "/tmp/openocd-rpi-pico" -type f -executable -name openocd`
+echo "PICO_OPENOCD: $PICO_OPENOCD"
+echo "PICO_OPENOCD_ON_FEDORA: $PICO_OPENOCD_ON_FEDORA"
+cp -f "$PICO_OPENOCD_ON_FEDORA" "$PICO_OPENOCD" 
+echo 
+
+############################################################################
+echo "${style_blue}${style_bold}Cleanup /tmp...${style_normal}"
+#rm -r "/tmp/openocd-rpi-pico"
 echo
 
 ############################################################################
@@ -95,6 +117,7 @@ for file in `find "$HOME/.vscode" -name 'pico_project.py'`; do
     sed -i 's|${{command:raspberry-pi-pico.getGDBPath}}|/usr/bin/gdb-multiarch|g' "$file"
 done
 echo
+
 
 ############################################################################
 echo "${style_blue}${style_bold}Install Raspberry Pi Pico udev-rules...${style_normal}"
