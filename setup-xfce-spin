@@ -114,6 +114,7 @@ sudo dnf -y install \
     plantuml plantumlqeditor \
     dialog \
     ghex \
+    gnuplot \
     kolourpaint \
     krdc \
     kcachegrind \
