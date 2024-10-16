@@ -105,6 +105,7 @@ sudo dnf -y install \
     python3-pylint \
     python3-pytest \
     python3-lsp-server \
+    python3-flask \
     \
     gtest-devel \
     cpputest-devel \
