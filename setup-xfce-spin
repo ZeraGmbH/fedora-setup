@@ -112,6 +112,7 @@ sudo dnf -y install \
     lcov gcovr \
     kernel-devel \
     glmark2 \
+    sqlitebrowser \
     plantuml plantumlqeditor \
     dialog \
     ghex \
