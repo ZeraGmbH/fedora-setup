@@ -32,7 +32,14 @@ echo
 # see https://docs.fedoraproject.org/en-US/quick-docs/installing-chromium-or-google-chrome-browsers/
 echo "${style_blue}${style_bold}Prepare Google Chrome.${style_normal}"
 sudo dnf -y install fedora-workstation-repositories
-sudo dnf -y config-manager --set-enabled google-chrome
+# with Fedora 41 syntax to enable group(repo) changed:
+fedora_version=$(cat /etc/os-release | grep 'VERSION_ID=' | cut -d'=' -f2)
+if [ "$fedora_version" -ge 41 ]; then
+    sudo dnf -y config-manager setopt google-chrome.enabled=1
+else
+    sudo dnf -y config-manager --set-enabled google-chrome
+fi
+
 echo "Done"
 echo
 
