@@ -29,6 +29,14 @@ sudo dnf -y update
 echo
 
 ############################################################################
+# RPM fusion - see https://docs.fedoraproject.org/en-US/quick-docs/rpmfusion-setup/
+sudo dnf -y install \
+  https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+
+sudo dnf -y install \
+  https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+############################################################################
 # see https://docs.fedoraproject.org/en-US/quick-docs/installing-chromium-or-google-chrome-browsers/
 echo "${style_blue}${style_bold}Prepare Google Chrome.${style_normal}"
 sudo dnf -y install fedora-workstation-repositories
@@ -64,6 +72,7 @@ sudo dnf -y install \
     google-chrome-stable \
     firefox \
     gvfs-smb \
+    vlc libavcodec-freeworld \
     \
     qt-creator \
     valgrind \
