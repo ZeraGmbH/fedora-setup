@@ -51,6 +51,9 @@ fi
 echo "Done"
 echo
 
+############################################################################
+echo "${style_blue}${style_bold}Remove parole - it does not work well and we have VLC${style_normal}"
+sudo dnf -y remove parole || true
 
 ############################################################################
 echo "${style_blue}${style_bold}Install dev packages...${style_normal}"
