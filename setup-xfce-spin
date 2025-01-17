@@ -60,6 +60,8 @@ echo "${style_blue}${style_bold}Install dev packages...${style_normal}"
 sudo dnf -y install \
     caja \
     pluma \
+    aspell-de aspell-fr aspell-es \
+    hunspell-de hunspell-fr hunspell-es \
     gnome-system-monitor \
     xfce4-sensors-plugin \
     xfce4-cpugraph-plugin \
