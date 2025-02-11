@@ -133,6 +133,7 @@ sudo dnf -y install \
     lcov gcovr \
     kernel-devel \
     glmark2 \
+    btop \
     sqlitebrowser \
     plantuml plantumlqeditor \
     dialog \
