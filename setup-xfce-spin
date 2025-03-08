@@ -127,6 +127,7 @@ sudo dnf -y install \
     python3-pytest \
     python3-lsp-server \
     python3-flask \
+    python3-polib \
     \
     gtest-devel \
     cpputest-devel \
