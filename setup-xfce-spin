@@ -123,6 +123,7 @@ sudo dnf -y install \
     npm \
     java \
     xmlstarlet \
+    neovim \
     python3-pylint \
     python3-pytest \
     python3-lsp-server \
