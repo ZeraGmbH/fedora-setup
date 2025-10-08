@@ -85,7 +85,7 @@ sudo dnf -y install \
     podman \
     podman-docker \
     clang-tools-extra \
-    cmake git clazy \
+    cmake git git-lfs clazy \
     systemd-devel \
     openssl-devel \
     python3-devel python3-numpy python3-passlib python3-bcrypt \

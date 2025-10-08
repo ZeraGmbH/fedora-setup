@@ -7,12 +7,12 @@
 ############################################################################
 echo "${style_blue}${style_bold}Install dev packages...${style_normal}"
 sudo dnf -y install \
+    git-lfs \
     java-1.8.0-openjdk-devel \
     ant \
     zsh
-
 #sudo alternatives --config java
-    
+
 ############################################################################
 echo
 echo "${style_yellow}${style_bold}Finished successfully!${style_normal}"
