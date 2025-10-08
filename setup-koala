@@ -5,14 +5,23 @@
 
 
 ############################################################################
-echo "${style_blue}${style_bold}Install dev packages...${style_normal}"
-sudo dnf -y install \
-    git-lfs \
-    java-1.8.0-openjdk-devel \
-    ant \
-    zsh
-#sudo alternatives --config java
+echo "${style_blue}${style_bold}Install repo for old jdks...${style_normal}"
+sudo `dirname $0`/external-repos/add-adoptium-repo
+echo
 
 ############################################################################
+echo "${style_blue}${style_bold}Install necessary dev-tools...${style_normal}"
+sudo dnf -y install \
+    git-lfs \
+    temurin-8-jdk \
+    ant \
+    zsh
 echo
+
+############################################################################
+echo "${style_blue}${style_bold}Make temurin-8-jdk javac default...${style_normal}"
+sudo alternatives --set javac /usr/lib/jvm/temurin-8-jdk/bin/javac
+echo
+
+############################################################################
 echo "${style_yellow}${style_bold}Finished successfully!${style_normal}"
