@@ -15,6 +15,7 @@ sudo dnf -y install \
     git-lfs \
     temurin-8-jdk \
     ant \
+    maven \
     zsh
 echo
 
