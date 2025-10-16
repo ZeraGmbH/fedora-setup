@@ -153,6 +153,7 @@ sudo dnf -y install \
     minicom \
     putty telnet \
     ncurses-compat-libs \
+    netcat \
     libusb-compat-0.1 \
     GConf2 \
     glibc.i686
