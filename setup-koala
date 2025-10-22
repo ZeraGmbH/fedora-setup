@@ -13,6 +13,9 @@ echo
 echo "${style_blue}${style_bold}Install necessary dev-tools...${style_normal}"
 sudo dnf -y install \
     git-lfs \
+    python-pytest \
+    python-dotenv \
+    socat \
     temurin-8-jdk \
     ant \
     maven \
