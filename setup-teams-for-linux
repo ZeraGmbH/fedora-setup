@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# includes
+. `dirname $0`/includes/common.inc
+. `dirname $0`/includes/snap.inc
+
+############################################################################
+echo "${style_blue}${style_bold}Install Android Studio (SDK is loaded on first start).${style_normal}"
+snap install teams-for-linux
