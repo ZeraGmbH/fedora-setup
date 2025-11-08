@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# includes
+. `dirname $0`/includes/common.inc
+
+
+############################################################################
+echo "${style_blue}${style_bold}Install musicians apps...${style_normal}"
+sudo dnf -y install \
+    amsynth \
+    ardour8 \
+    calf \
+    drumkv1 \
+    guitarix \
+    hydrogen \
+    lsp-plugins lsp-plugins-vst3 lsp-plugins-vst lsp-plugins-lv2 \
+    musescore \
+    padthv1 \
+    samplv1 \
+    setBfree \
+    fluid-soundfont-gm fluid-soundfont-gs\
+    zynaddsubfx zynaddsubfx-lv2 zynaddsubfx-vst \
+    zam-plugins
+echo
+
+############################################################################
+echo "${style_yellow}${style_bold}Finished successfully!${style_normal}"
