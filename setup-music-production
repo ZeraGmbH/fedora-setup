@@ -6,21 +6,40 @@
 
 ############################################################################
 echo "${style_blue}${style_bold}Install musicians apps...${style_normal}"
-sudo dnf -y install \
+sudo dnf -y copr enable ycollet/audinux
+sudo dnf install --skip-broken --skip-unavailable \
+    --exclude='*debuginfo*' \
+    --exclude='*debugsource*' \
+    --exclude=vst3-paulstretch \
+    --exclude=vst3-prom \
+    --exclude=*showmidi* \
+    --exclude=vst3-digital-audio-effects \
+    --exclude=*zam-plugins* \
+    --exclude=lv2-ir-plugins* \
+    --exclude=lv2-x42-plugins \
+    --exclude=Carla \
+    --exclude=lv2-prom \
+    --exclude=lv2-amsynth-plugin \
+    --exclude=vst-amsynth-plugin \
+    --exclude=vst-prom \
+    \
+    AVLDrumkits-* \
+    DISTRHO-Ports \
     amsynth \
+    hydrogen hydrogen-drumkits-2 hydrogen-drumkit-* \
+    *.lv2 \
+    vst-* \
+    vst3-* \
+    lv2-* \
+    zam-mao-plugins \
+
+sudo dnf -y install \
+    qpwgraph \
     ardour8 \
-    calf \
-    drumkv1 \
-    guitarix \
-    hydrogen \
-    lsp-plugins lsp-plugins-vst3 lsp-plugins-vst lsp-plugins-lv2 \
     musescore \
-    padthv1 \
-    samplv1 \
     setBfree \
-    fluid-soundfont-gm fluid-soundfont-gs\
+    fluid-soundfont-gm \
     zynaddsubfx zynaddsubfx-lv2 zynaddsubfx-vst \
-    zam-plugins
 echo
 
 ############################################################################
