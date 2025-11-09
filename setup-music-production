@@ -25,6 +25,7 @@ sudo dnf install --skip-broken --skip-unavailable \
     \
     AVLDrumkits-* \
     DISTRHO-Ports \
+    projectM-mao projectM-extra-* \
     amsynth \
     hydrogen hydrogen-drumkits-2 hydrogen-drumkit-* \
     *.lv2 \
