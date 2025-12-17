@@ -73,6 +73,7 @@ sudo dnf -y install \
     gedit \
     evince \
     file-roller \
+    sqlite3 \
     libreoffice \
     google-chrome-stable \
     firefox \
