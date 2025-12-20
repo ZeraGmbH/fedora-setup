@@ -93,28 +93,30 @@ sudo dnf -y install \
     xsd xerces-c-devel \
     fftw-devel \
     python3-jsonschema \
-    qt5-linguist qt5-doctools qt5-qtscript \
-    qt5-qtlocation-devel \
-    qt5-qtcharts-devel \
-    qt5-qtdeclarative-devel \
-    qt5-qtlocation-devel \
-    qt5-qtmultimedia-devel \
+    qt5-linguist qt6-linguist qt5-doctools qt6-doctools qt5-qtscript \
+    qt5-qtlocation-devel qt6-qtlocation-devel \
+    qt5-qtcharts-devel qt6-qtcharts-devel \
+    qt5-qtdeclarative-devel qt6-qtdeclarative-devel \
+    qt5-qtlocation-devel qt6-qtlocation-devel \
+    qt5-qtmultimedia-devel qt6-qtmultimedia-devel \
     qt5-qtquickcontrols qt5-qtquickcontrols2-devel \
-    qt5-qtsensors-devel \
-    qt5-qtserialport-devel \
-    qt5-qtsvg-devel \
-    qt5-qttools-devel \
-    qt5-qtvirtualkeyboard-devel \
-    qt5-qtwayland-devel \
-    qt5-qtwebchannel-devel \
-    qt5-qtwebengine-devel \
+    qt5-qtsensors-devel qt6-qtsensors-devel \
+    qt5-qtserialport-devel qt6-qtserialport-devel \
+    qt5-qtsvg-devel qt6-qtsvg-devel \
+    qt5-qttools-devel qt6-qttools-devel \
+    qt5-qtvirtualkeyboard-devel qt6-qtvirtualkeyboard-devel \
+    qt5-qtwayland-devel qt6-qtwayland-devel \
+    qt5-qtwebchannel-devel qt6-qtwebchannel \
+    qt5-qtwebengine-devel qt6-qtwebengine \
     qt5-qtwebkit-devel \
     qt5-qtx11extras-devel \
     qt5-qtxmlpatterns-devel \
-    qt5-qtconnectivity-devel \
+    qt5-qtconnectivity-devel qt6-qtconnectivity-devel \
     qt-devel \
-    kf5-networkmanager-qt-devel kf5-modemmanager-qt-devel kf5-syntax-highlighting-devel \
-    qwt-qt5-devel \
+    kf5-networkmanager-qt-devel kf6-networkmanager-qt-devel \
+    kf5-modemmanager-qt-devel kf6-modemmanager-qt-devel \
+    kf5-syntax-highlighting-devel kf6-syntax-highlighting-devel \
+    qwt-qt5-devel qwt-qt6-devel \
     gammaray \
     \
     flatbuffers-devel flatbuffers-compiler protobuf-devel protobuf-compiler \
