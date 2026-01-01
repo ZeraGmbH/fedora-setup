@@ -113,6 +113,7 @@ sudo dnf -y install \
     qt5-qtxmlpatterns-devel \
     qt5-qtconnectivity-devel qt6-qtconnectivity-devel \
     qt6-qt5compat-devel \
+    qt6-qtscxml-devel \
     qt-devel \
     kf5-networkmanager-qt-devel kf6-networkmanager-qt-devel \
     kf5-modemmanager-qt-devel kf6-modemmanager-qt-devel \
