@@ -5,5 +5,12 @@
 . `dirname $0`/includes/snap.inc
 
 ############################################################################
-echo "${style_blue}${style_bold}Install Android Studio (SDK is loaded on first start).${style_normal}"
+echo "${style_blue}${style_bold}Install MS Teams.${style_normal}"
 snap install teams-for-linux
+
+############################################################################
+echo
+echo
+echo "${style_yellow}${style_bold}Log off - recommended for teams appearing in start menu${style_normal}"
+xfce4-session-logout
+echo
