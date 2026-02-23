@@ -143,6 +143,7 @@ sudo dnf -y install \
     kernel-devel \
     glmark2 \
     btop \
+    wine \
     sqlitebrowser \
     plantuml plantumlqeditor \
     dialog \
