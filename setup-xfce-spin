@@ -4,6 +4,22 @@
 . `dirname $0`/includes/common.inc
 
 ############################################################################
+# After update - in case of trouble with dev-gpt\x2auto\x2droot.device
+# Boot with elder kernel
+# sudo akmods --force --rebuild
+# sudo dracut --force --regenerate-all
+# sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+
+############################################################################
+# In case of
+# OpenPGP check for package "google-chrome-stable-..." (/var/cache/libdnf5/google-chrome-6ed7e4f336f6863c/packages/google-chrome-stable-145.0.7632.109-1.x86_64.rpm) 
+# from repo "google-chrome" has failed: Public key is not installed.
+
+# rpmkeys --list
+# => Fo all from Gooogle...:
+# sudo rpmkeys --erase <hash>
+
+############################################################################
 echo "${style_blue}${style_bold}Adjust xfce4-terminal settings.${style_normal}"
 mkdir -p ${HOME}/.config/xfce4/terminal
 cp "${REPO_PATH}/xfce4-terminal/terminalrc" ${HOME}/.config/xfce4/terminal
