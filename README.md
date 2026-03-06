@@ -20,3 +20,22 @@ To check the output of *setup-xfce-spin* (see below) perform following steps:
   -> Adapt the proper line of the above command like this: `bash -x ./setup-xfce-spin 2>&1 | tee -a log.txt`
 * When the script has finished, check the log file.
 
+## Manual troubleshooting
+
+### Elder NVIDIA graphic cards
+In case system boots into emergency console with reporting trouble starting
+```dev-gpt\x2auto\x2droot.device```:
+
+* Boot with elder kernel
+* sudo akmods --force --rebuild
+* sudo dracut --force --regenerate-all
+* sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+
+### Google chrome 'public key not installed'
+In case of
+```
+OpenPGP check for package "google-chrome-stable-..." (/var/cache/libdnf5/google-chrome-6ed7e4f336f6863c/packages/google-chrome-stable-145.0.7632.109-1.x86_64.rpm) from repo "google-chrome" has failed: Public key is not installed.
+```
+
+* run ```rpmkeys --list```
+* => Fo all keys from Google... copy hash and run: ```sudo rpmkeys --erase <hash>```
