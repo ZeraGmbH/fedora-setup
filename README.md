@@ -38,4 +38,4 @@ OpenPGP check for package "google-chrome-stable-..." (/var/cache/libdnf5/google-
 ```
 
 * run ```rpmkeys --list```
-* => Fo all keys from Google... copy hash and run: ```sudo rpmkeys --erase <hash>```
+* For all keys from Google... copy hash and run: ```sudo rpmkeys --erase <hash>```
