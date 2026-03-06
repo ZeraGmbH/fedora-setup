@@ -20,7 +20,7 @@ To check the output of *setup-xfce-spin* (see below) perform following steps:
   -> Adapt the proper line of the above command like this: `bash -x ./setup-xfce-spin 2>&1 | tee -a log.txt`
 * When the script has finished, check the log file.
 
-## Manual troubleshooting
+## Manual troubleshooting after update
 
 ### Elder NVIDIA graphic cards
 In case system boots into emergency console with reporting trouble starting
