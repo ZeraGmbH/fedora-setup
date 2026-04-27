@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# includes
+. `dirname $0`/includes/common.inc
+
+# To remove:
+# sudo dnf remove '*-debuginfo' '*-debugsource'
+
+############################################################################
+echo "${style_blue}${style_bold}Install debug packages...${style_normal}"
+sudo dnf -y debuginfo-install \
+    qt5-qtbase qt5-qtdeclarative qt5-qtquickcontrols qt5-qtquickcontrols2 qt5-qtsvg qt5-qtcharts
+
+
+############################################################################
+echo
+echo
+echo "${style_yellow}${style_bold}Log off - HIGLY RECOMMENDED !!!!!${style_normal}"
+xfce4-session-logout
+echo
