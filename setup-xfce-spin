@@ -115,6 +115,7 @@ sudo dnf -y install \
     qt6-qt5compat-devel \
     qt6-qtscxml-devel \
     qt-devel qtwebkit-devel \
+    extra-cmake-modules \
     kf5-networkmanager-qt-devel kf6-networkmanager-qt-devel \
     kf5-modemmanager-qt-devel kf6-modemmanager-qt-devel \
     kf5-syntax-highlighting-devel kf6-syntax-highlighting-devel \
