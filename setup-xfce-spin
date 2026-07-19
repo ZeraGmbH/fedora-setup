@@ -56,6 +56,10 @@ echo "${style_blue}${style_bold}Remove parole - it does not work well and we hav
 sudo dnf -y remove parole || true
 
 ############################################################################
+echo "${style_blue}${style_bold}Remove localsearch - it is gnome indexer and for us it does nothing but eating resources (CPU/RAM)${style_normal}"
+sudo dnf -y remove localsearch || true
+
+############################################################################
 echo "${style_blue}${style_bold}Install dev packages...${style_normal}"
 sudo dnf -y install \
     caja \
