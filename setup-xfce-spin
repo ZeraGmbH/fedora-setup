@@ -79,6 +79,7 @@ sudo dnf -y install \
     firefox \
     gvfs-smb \
     vlc libavcodec-freeworld \
+    keepassxc \
     \
     qt-creator \
     valgrind \
