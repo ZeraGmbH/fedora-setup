@@ -6,7 +6,7 @@
 
 ############################################################################
 echo "${style_blue}${style_bold}Install repo for old jdks...${style_normal}"
-sudo `dirname $0`/external-repos/add-adoptium-repo
+sudo `dirname $0`/scripts/add-adoptium-repo
 echo
 
 ############################################################################
