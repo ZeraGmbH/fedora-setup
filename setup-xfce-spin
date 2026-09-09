@@ -180,8 +180,7 @@ echo
 
 ############################################################################
 echo "${style_blue}${style_bold}Add to group dialout.${style_normal}"
-ME=$(whoami)
-sudo usermod -aG dialout "$ME"
+sudo usermod -aG dialout $USER
 echo "Done"
 echo
 
