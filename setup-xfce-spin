@@ -152,6 +152,7 @@ sudo dnf -y install \
     glmark2 \
     btop \
     memtest86+ \
+    ripgrep \
     wine \
     sqlitebrowser \
     plantuml plantumlqeditor \
