@@ -136,7 +136,6 @@ sudo dnf -y install \
     npm \
     java \
     xmlstarlet \
-    neovim \
     librsvg2-tools \
     python3-pylint \
     python3-pytest \
