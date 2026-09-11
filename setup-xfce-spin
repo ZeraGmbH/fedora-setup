@@ -143,6 +143,7 @@ sudo dnf -y install \
     python3-flask \
     python3-polib \
     python3-ansi2html \
+    fuse fuse-libs \
     \
     gtest-devel \
     cpputest-devel \
