@@ -1,0 +1,22 @@
+#! /bin/bash
+
+BASE_DIR=`dirname $0`
+
+# includes
+. $BASE_DIR/includes/common.inc
+
+############################################################################
+echo "${style_blue}${style_bold}Add to groups video,render...${style_normal}"
+sudo usermod -aG video,render $USER
+
+############################################################################
+echo "${style_blue}${style_bold}Install distrobox...${style_normal}"
+sudo dnf -y install distrobox
+
+if ! distrobox list | grep -q strix-rocm10; then
+    echo "${style_blue}${style_bold}Create distrobox container...${style_normal}"
+    distrobox create -Y -n strix-rocm10 \
+      --image docker.io/kyuz0/amd-strix-halo-toolboxes:rocm-10.0 \
+      --additional-flags "--device /dev/dri --device /dev/kfd --group-add video --group-add render"
+fi
+
