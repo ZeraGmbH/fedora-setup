@@ -127,6 +127,7 @@ sudo dnf -y install \
     qwt-qt5-devel qwt-qt6-devel \
     cmark-devel \
     gammaray \
+    rust cargo \
     \
     flatbuffers-devel flatbuffers-compiler protobuf-devel protobuf-compiler \
     jq \
