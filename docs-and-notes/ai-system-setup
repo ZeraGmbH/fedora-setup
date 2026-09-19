@@ -1,0 +1,91 @@
+---------------------------------------------------------
+distrobox enter strix-rocm10
+llama-server --host 0.0.0.0 --port 8080 --models-dir /home/superandy/data/models --models-max 1
+
+# Test on host
+curl -s "http://127.0.0.1:8080/v1/models"
+
+
+---------------------------------------------------------
+# search engine
+mkdir -p ~/.searxng
+
+podman run -d --replace --name searxng \
+  -p 3001:8080 \
+  -e SEARXNG_SETTINGS_PATH=/etc/searxng/settings.yml \
+  -v ~/.searxng:/etc/searxng:Z \
+  searxng/searxng
+
+# Test on host
+curl -s "http://127.0.0.1:3001/search?q=test&format=json"
+
+
+---------------------------------------------------------
+# open-webui
+podman run -d --replace --name open-webui \
+  -p 3000:8080\
+  -v open-webui:/app/backend/data \
+  ghcr.io/open-webui/open-webui:main
+
+http://127.0.0.1:3000
+
+Webui Admin
+http://host.containers.internal:3001/search?q=<query>
+
+# Test on host
+curl -s "http://127.0.0.1:3001/search?q=test&format=json"
+podman exec -it open-webui curl -s "http://host.containers.internal:3001/search?q=test&format=json"
+
+
+---------------------------------------------------------
+# Qt-Creator
+https://www.youtube.com/watch?v=iYKg-wS69h8
+https://www.qt.io/blog/qt-creator-20-and-local-ai
+
+-> Qt-creator
+Extension: Add ACP & MCP
+Preferences / AI / ACP Servers / Add / Template: Open Code
+Open chat and connect (by default Open code servers host models)
+Close Qt-Creator
+mkdir -p /home/superandy/data/git-projects/qt
+cd /home/superandy/data/git-projects/qt
+git pull https://github.com/TheQtCompanyRnD/agent-skills.git
+ln -s /home/superandy/data/git-projects/qt/agent-skills/skills ~/.config/opencode/skills
+
+podman pull isokoliuk/mcp-searxng:latest
+
+Modify /home/superandy/.config/opencode/opencode.jsonc:
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "llama-cpp": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "llama.cpp server",
+      "options": {
+        "baseURL": "http://127.0.0.1:8080/v1"
+      },
+      "models": {
+        "gemma-4-26B-A4B-it-MXFP4_MOE": {
+          "name": "gemma-4-26B-A4B-it-MXFP4_MOE"
+        }
+      }
+    }
+  },
+  "mcp": {
+    "searxng": {
+      "enabled": true,
+      "type": "local",
+      "command": [
+        "podman", 
+        "run", 
+        "-i", 
+        "--rm", 
+        "-e", 
+        "SEARXNG_URL=http://host.containers.internal:3001", 
+        "isokoliuk/mcp-searxng:latest"
+      ]
+    }
+  },
+  "model": "llama-cpp/gemma-4-26B-A4B-it-MXFP4_MOE"
+}
+
