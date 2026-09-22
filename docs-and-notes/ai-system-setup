@@ -50,7 +50,8 @@ Close Qt-Creator
 mkdir -p /home/superandy/data/git-projects/qt
 cd /home/superandy/data/git-projects/qt
 git pull https://github.com/TheQtCompanyRnD/agent-skills.git
-ln -s /home/superandy/data/git-projects/qt/agent-skills/skills ~/.config/opencode/skills
+mkdir -p ~/.config/opencode/skills
+ln -s /home/superandy/data/git-projects/qt/agent-skills/skills ~/.config/opencode/skills/qt
 
 podman pull isokoliuk/mcp-searxng:latest
 
