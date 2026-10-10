@@ -1,9 +1,13 @@
 ---------------------------------------------------------
 distrobox enter strix-rocm10
-llama-server --host 0.0.0.0 --port 8080 --models-dir /home/superandy/data/models --models-max 1
+llama-server --host 0.0.0.0 --port 8080 --models-dir /home/superandy/data/models --models-max 4
 
 # Test on host
 curl -s "http://127.0.0.1:8080/v1/models"
+
+--- OR preferred ---
+
+unsloth studio -H 0.0.0.0 -p 8888
 
 
 ---------------------------------------------------------
@@ -17,6 +21,7 @@ podman run -d --replace --name searxng \
   searxng/searxng
 
 # Test on host
+http://127.0.0.1:3001
 curl -s "http://127.0.0.1:3001/search?q=test&format=json"
 
 
@@ -30,16 +35,15 @@ podman run -d --replace --name open-webui \
 http://127.0.0.1:3000
 
 Webui Admin
-http://host.containers.internal:3001/search?q=<query>
-
-# Test on host
-curl -s "http://127.0.0.1:3001/search?q=test&format=json"
-podman exec -it open-webui curl -s "http://host.containers.internal:3001/search?q=test&format=json"
+* Connections
+  http://host.containers.internal:8888/v1
+* Auth from unsloth Studio - see "apiKey" in opencode.jsonc below
+* Web Search
+* http://host.containers.internal:3001/search?q=<query>
 
 
 ---------------------------------------------------------
 # Qt-Creator
-https://www.youtube.com/watch?v=iYKg-wS69h8
 https://www.qt.io/blog/qt-creator-20-and-local-ai
 
 -> Qt-creator
@@ -53,22 +57,33 @@ git pull https://github.com/TheQtCompanyRnD/agent-skills.git
 mkdir -p ~/.config/opencode/skills
 ln -s /home/superandy/data/git-projects/qt/agent-skills/skills ~/.config/opencode/skills/qt
 
+# !!!! to gain access to all models llama.ccp can reach !!!
+/usr/libexec/qtcreator/dlwrapper --download https://github.com/anomalyco/opencode/releases/download/v1.18.34/opencode-linux-x64.tar.gz  ./opencode plugin opencode-dynamic-custom-providers
+
+* MCP searxng
 podman pull isokoliuk/mcp-searxng:latest
 
 Modify /home/superandy/.config/opencode/opencode.jsonc:
+
 {
   "$schema": "https://opencode.ai/config.json",
+  "model": "unsloth-studio/cdiamond/Qwen3.8-27B-iMatrix-NVFP4-MTP-GGUF",
   "provider": {
+    "unsloth-studio": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "unsloth",
+      "dynamic": true,
+      "options": {
+        "baseURL": "http://127.0.0.1:8888/v1",
+        "apiKey": "sk-unsloth-..."
+      }
+    },
     "llama-cpp": {
       "npm": "@ai-sdk/openai-compatible",
-      "name": "llama.cpp server",
+      "name": "llama.cpp",
+      "dynamic": true,
       "options": {
-        "baseURL": "http://127.0.0.1:8080/v1"
-      },
-      "models": {
-        "gemma-4-26B-A4B-it-MXFP4_MOE": {
-          "name": "gemma-4-26B-A4B-it-MXFP4_MOE"
-        }
+        "baseURL": "http://127.0.0.1:8080/v1",
       }
     }
   },
@@ -86,7 +101,11 @@ Modify /home/superandy/.config/opencode/opencode.jsonc:
         "isokoliuk/mcp-searxng:latest"
       ]
     }
-  },
-  "model": "llama-cpp/gemma-4-26B-A4B-it-MXFP4_MOE"
+  }
 }
+
+
+
+export CLAUDE_CODE_ATTRIBUTION_HEADER=0
+unsloth start claude --model cdiamond/Qwen3.8-27B-iMatrix-NVFP4-MTP-GGUF:Qwen3.8-27B-iMatrix-NVFP4-MTP
 
