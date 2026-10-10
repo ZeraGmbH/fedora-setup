@@ -6,17 +6,31 @@ BASE_DIR=`dirname $0`
 . $BASE_DIR/includes/common.inc
 
 ############################################################################
-echo "${style_blue}${style_bold}Add to groups video,render...${style_normal}"
-sudo usermod -aG video,render $USER
-
-############################################################################
 echo "${style_blue}${style_bold}Install distrobox...${style_normal}"
 sudo dnf -y install distrobox
 
-if ! distrobox list | grep -q strix-rocm10; then
-    echo "${style_blue}${style_bold}Create distrobox container...${style_normal}"
-    distrobox create -Y -n strix-rocm10 \
-      --image docker.io/kyuz0/amd-strix-halo-toolboxes:rocm-10.0 \
-      --additional-flags "--device /dev/dri --device /dev/kfd --group-add video --group-add render"
-fi
+############################################################################
+echo "${style_blue}${style_bold}Add to groups video,render...${style_normal}"
+sudo usermod -aG video,render $USER
+
+
+############################################################################
+echo "${style_blue}${style_bold}Fetch kyuz0/amd-strix-halo-toolboxes...${style_normal}"
+podman image pull docker.io/kyuz0/amd-strix-halo-toolboxes:rocm-10.0
+podman image pull docker.io/kyuz0/amd-strix-halo-toolboxes:rocm-10.0-qwen-3.8-flash-next
+
+
+echo "${style_blue}${style_bold}Create distrobox container strix-rocm10...${style_normal}"
+distrobox create -Y -n strix-rocm10 \
+  --image docker.io/kyuz0/amd-strix-halo-toolboxes:rocm-10.0 \
+  --additional-flags "--device /dev/dri --device /dev/kfd --group-add video --group-add render"
+
+echo "${style_blue}${style_bold}Create distrobox container strix-rocm10-qwen-3.8-flash-next...${style_normal}"
+distrobox create -Y -n strix-rocm10-qwen-3.8-flash-next \
+  --image docker.io/kyuz0/amd-strix-halo-toolboxes:rocm-10.0-qwen-3.8-flash-next \
+  --additional-flags "--device /dev/dri --device /dev/kfd --group-add video --group-add render"
+
+#echo "${style_blue}${style_bold}Install additional packages inside distrobox...${style_normal}"
+#distrobox enter strix-rocm10 -- $BASE_DIR/scripts/rocm10-add-packages
+
 
