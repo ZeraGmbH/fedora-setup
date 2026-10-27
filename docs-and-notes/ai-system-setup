@@ -1,12 +1,13 @@
 ---------------------------------------------------------
 distrobox enter strix-rocm10
+export ROCBLAS_USE_HIPBLASLT=1
+
 llama-server --host 0.0.0.0 --port 8080 --models-dir /home/superandy/data/models --models-max 4
 
 # Test on host
 curl -s "http://127.0.0.1:8080/v1/models"
 
 --- OR preferred ---
-
 unsloth studio -H 0.0.0.0 -p 8888
 
 
@@ -48,17 +49,16 @@ https://www.qt.io/blog/qt-creator-20-and-local-ai
 
 -> Qt-creator
 Extension: Add ACP & MCP
-Preferences / AI / ACP Servers / Add / Template: Open Code
-Open chat and connect (by default Open code servers host models)
+Preferences / AI / ACP Servers / Add / Template: Custom
+Executable: /usr/local/bin/opencode
+Arguments: acp
+
 Close Qt-Creator
 mkdir -p /home/superandy/data/git-projects/qt
 cd /home/superandy/data/git-projects/qt
 git pull https://github.com/TheQtCompanyRnD/agent-skills.git
 mkdir -p ~/.config/opencode/skills
 ln -s /home/superandy/data/git-projects/qt/agent-skills/skills ~/.config/opencode/skills/qt
-
-# !!!! to gain access to all models llama.ccp can reach !!!
-/usr/libexec/qtcreator/dlwrapper --download https://github.com/anomalyco/opencode/releases/download/v1.18.34/opencode-linux-x64.tar.gz  ./opencode plugin opencode-dynamic-custom-providers
 
 * MCP searxng
 podman pull isokoliuk/mcp-searxng:latest
@@ -68,14 +68,17 @@ Modify /home/superandy/.config/opencode/opencode.jsonc:
 {
   "$schema": "https://opencode.ai/config.json",
   "model": "unsloth-studio/cdiamond/Qwen3.8-27B-iMatrix-NVFP4-MTP-GGUF",
+  "plugins": [
+    "opencode-models-discovery@1.9.0"
+  ],
   "provider": {
     "unsloth-studio": {
       "npm": "@ai-sdk/openai-compatible",
       "name": "unsloth",
-      "dynamic": true,
       "options": {
         "baseURL": "http://127.0.0.1:8888/v1",
-        "apiKey": "sk-unsloth-..."
+        "apiKey": "sk-unsloth-...",
+        "modelsDiscovery": {"enabled": true }
       }
     },
     "llama-cpp": {
@@ -103,9 +106,6 @@ Modify /home/superandy/.config/opencode/opencode.jsonc:
     }
   }
 }
-
-
-
 export CLAUDE_CODE_ATTRIBUTION_HEADER=0
 unsloth start claude --model cdiamond/Qwen3.8-27B-iMatrix-NVFP4-MTP-GGUF:Qwen3.8-27B-iMatrix-NVFP4-MTP
 
