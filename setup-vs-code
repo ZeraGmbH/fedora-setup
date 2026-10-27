@@ -15,14 +15,12 @@ echo
 echo "${style_blue}${style_bold}Install VSCode Python support.${style_normal}"
 code --install-extension ms-python.python
 code --install-extension ms-toolsai.jupyter
-code --install-extension VisualStudioExptTeam.vscodeintellicode
 echo
 
 echo "${style_blue}${style_bold}Install VSCode useful extensions.${style_normal}"
 code --install-extension ms-vscode.hexeditor
 code --install-extension ms-azuretools.vscode-docker
 code --install-extension bierner.markdown-preview-github-styles
-code --install-extension GitHub.vscode-github-actions
 code --install-extension  ms-vscode-remote.vscode-remote-extensionpack
 code --install-extension formulahendry.auto-rename-tag
 code --install-extension formulahendry.auto-close-tag
