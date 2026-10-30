@@ -17,7 +17,6 @@ sudo usermod -aG video,render $USER
 ############################################################################
 echo "${style_blue}${style_bold}Fetch kyuz0/amd-strix-halo-toolboxes...${style_normal}"
 podman image pull docker.io/kyuz0/amd-strix-halo-toolboxes:rocm-10.0
-podman image pull docker.io/kyuz0/amd-strix-halo-toolboxes:rocm-10.0-qwen-3.8-flash-next
 
 echo "${style_blue}${style_bold}Create distrobox container strix-rocm10...${style_normal}"
 distrobox create -Y -n strix-rocm10 \
